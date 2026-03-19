@@ -1,0 +1,5 @@
+{"records": [{
+    "jsonSchemaLocation": "/API_Customer_Service/Service Descriptors/api_customer_service.Process-Customer.json",
+    "conversionType": "linked",
+    "xsdSchemaTargetNamespace": "http://www.example.org/customers"
+}]}

@@ -1,0 +1,7 @@
+{
+    "records": [],
+    "resources": [{
+        "location": "Service Descriptors/api_customer_service.Process-Customer.json",
+        "type": "generated"
+    }]
+}

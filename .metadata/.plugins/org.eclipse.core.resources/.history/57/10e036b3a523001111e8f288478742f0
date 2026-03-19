@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/customers" xmlns:tns="http://www.example.org/customers" elementFormDefault="qualified">
+
+    <element name="customers" type="tns:customers_type"></element>
+    
+    <complexType name="customers_type">
+    	<sequence>
+    		<element name="customer" type="tns:customer_type" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="customer_type"></complexType>
+</schema>

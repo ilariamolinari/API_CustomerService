@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/customer/" targetNamespace="http://www.example.org/customer/">
+      
+    
+  <!-- Root element -->
+      
+  <element name="customers" type="tns:customers_type"/>
+      
+    
+    
+  <!-- List type -->
+      
+  <complexType name="customers_type">
+        	
+    <sequence>
+          		
+      <element maxOccurs="unbounded" minOccurs="0" name="customer" type="tns:customer_type"/>
+          	
+    </sequence>
+        
+  </complexType>
+      
+    
+  <!-- List type -->
+    	
+  <complexType name="customer_type">
+        
+    <sequence>
+
+    	<element name="ID" type="integer" minOccurs="0" maxOccurs="1"></element>
+    	<element maxOccurs="1" minOccurs="0" name="Name"
+    		type="string">
+    	</element>
+
+    	<element maxOccurs="1" minOccurs="0" name="Surname"
+    		type="string">
+    	</element>
+
+    	<element maxOccurs="1" minOccurs="0" name="PhoneNumber"
+    		type="string">
+    	</element>
+
+    	<element maxOccurs="1" minOccurs="0" name="Tiercode"
+    		type="integer">
+    	</element>
+
+    </sequence>
+
+  </complexType>
+      
+      
+  
+</schema>

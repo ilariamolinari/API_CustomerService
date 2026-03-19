@@ -1,0 +1,66 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Customer",
+    "description" : "Customer service"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/customer" : {
+      "get" : {
+        "summary" : "getCustomer",
+        "description" : "getCustomer",
+        "operationId" : "get-customer",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a customers to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/customers"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "customers" : {
+      "type" : "object",
+      "properties" : {
+        "customer" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/customer",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "customer" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "surname" : {
+          "type" : "string"
+        },
+        "phonenumber" : {
+          "type" : "string"
+        },
+        "tiercode" : {
+          "type" : "string"
+        },
+        "createdate" : {
+          "type" : "string",
+          "format" : "date"
+        }
+      }
+    }
+  }
+}
