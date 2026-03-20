@@ -10,6 +10,30 @@
   "schemes" : [ "http" ],
   "paths" : {
     "/customer" : {
+      "post" : {
+        "summary" : "postCustomer",
+        "description" : "postCustomer",
+        "operationId" : "post-customer",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/customers"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
       "get" : {
         "summary" : "getCustomer",
         "description" : "getCustomer",

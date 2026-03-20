@@ -7,6 +7,10 @@
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
+      <operation xmi:id="_7aCyoCQ-EfGwTMxVff5bNA" operationName="post" nickname="post-customer" httpMethod="POST" notes="postCustomer" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
       <parameters xmi:id="_3FnhkCOlEfG5c4xDyo7NRA"/>
       <advancedConfig xmi:id="_3D-i0SOlEfG5c4xDyo7NRA" blockingQueueSize="2147483647"/>
     </scaext:binding>
