@@ -8,6 +8,8 @@
     xmlns:ns0="http://xmlns.example.com/20260319160400PLT"
     xmlns:ns1="http://www.tibco.com/pe/WriteToLogActivitySchema"
     xmlns:ns10="http://www.tibco.com/namespaces/tnt/plugins/jdbc+f3df083d-8a03-4d90-9e77-a2923a41bd3a+output"
+    xmlns:ns11="http://tns.tibco.com/bw/palette/internal/accumulateoutput+501e9170-bb74-4933-902f-5e65a597a0c0"
+    xmlns:ns12="http://tns.tibco.com/bw/palette/internal/accumulateoutput+ba869980-e49d-46df-ad27-5db8d92f27ed"
     xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b50ad173-3a6d-4fa5-b201-afaea653b20c+input"
     xmlns:ns3="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b50ad173-3a6d-4fa5-b201-afaea653b20c+output"
     xmlns:ns4="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.JDBCQuery"
@@ -51,6 +53,7 @@
         <task name="postOut">
             <endingVariables>
                 <variable>postOut-input</variable>
+                <variable>InsertedCustomers</variable>
             </endingVariables>
         </task>
         <task name="Post_Start">
@@ -61,10 +64,11 @@
         <task name="Iterate">
             <endingVariables>
                 <variable>post</variable>
+                <variable>Insert_check</variable>
                 <variable>SingleCustomer</variable>
             </endingVariables>
         </task>
-        <task name="GroupEnd">
+        <task name="InsertedCustomers">
             <endingVariables>
                 <variable>Insert</variable>
             </endingVariables>
@@ -82,7 +86,6 @@
         <task name="Check_log">
             <endingVariables>
                 <variable>Check_log-input</variable>
-                <variable>Insert_check</variable>
             </endingVariables>
         </task>
         <task name="Check_error">
@@ -579,6 +582,14 @@
                                     name="name" nillable="false" type="string"/>
                                     <element maxOccurs="1" minOccurs="0"
                                     name="surname" nillable="false" type="string"/>
+                                    <element maxOccurs="1" minOccurs="0"
+                                    name="phonenumber"
+                                    nillable="false" type="string"/>
+                                    <element maxOccurs="1" minOccurs="0"
+                                    name="tiercode" nillable="false" type="int"/>
+                                    <element maxOccurs="1" minOccurs="0"
+                                    name="createdate"
+                                    nillable="false" type="date"/>
                                 </sequence>
                             </complexType>
                         </element>
@@ -586,6 +597,18 @@
                 </complexType>
             </element>
         </schema>
+        <xs:schema elementFormDefault="qualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/accumulateoutput+ba869980-e49d-46df-ad27-5db8d92f27ed"
+            xmlns:Q1="http://www.tibco.com/namespaces/tnt/plugins/jdbc+f3df083d-8a03-4d90-9e77-a2923a41bd3a+output"
+            xmlns:tns="http://tns.tibco.com/bw/palette/internal/accumulateoutput+ba869980-e49d-46df-ad27-5db8d92f27ed" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:import namespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+f3df083d-8a03-4d90-9e77-a2923a41bd3a+output"/>
+            <xs:element name="AccumulatedOutput" type="tns:AccumulatedOutputType"/>
+            <xs:complexType name="AccumulatedOutputType">
+                <xs:sequence maxOccurs="1" minOccurs="0">
+                    <xs:element maxOccurs="unbounded" minOccurs="0" ref="Q1:resultSet"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
         <wsdl:definitions
             targetNamespace="http://xmlns.example.com/20260319160400PLT"
             xmlns:extns="http://www.example.org/customers"
@@ -619,8 +642,7 @@
                     name="httpHeaders" tibex:source="bw.rest"/>
             </wsdl:message>
             <wsdl:message name="postResponse">
-                <wsdl:part name="item"
-                    tibex:hasMultipleNamespaces="false" type="xsd:string"/>
+                <wsdl:part element="extns:customers" name="item" tibex:hasMultipleNamespaces="false"/>
             </wsdl:message>
             <wsdl:message name="post4XXFaultMessage">
                 <wsdl:part element="extns1:client4XXError" name="clientError"/>
@@ -1456,8 +1478,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.4/@activity/@activities.1/@activity/@activity/@activities.3"/>
 
                                     <layoutConstraint
-                                    x="122"
-                                    xsi:type="notation:Bounds" y="80"/>
+                                    x="118" xsi:type="notation:Bounds"/>
                                     </children>
 
                                     <children type="4002">
@@ -2048,17 +2069,6 @@
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.4/@activity/@activities.1/@activity/@activity/@links/@children.2"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
             target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.2" type="4006">
             <children type="6002">
@@ -2066,19 +2076,8 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.4/@activity/@activities.1/@activity/@activity/@links/@children.3"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.4/@activity/@activities.1/@activity/@activity/@links/@children.2"/>
             <bendpoints points="[25, 19, -59, -45]$[72, 54, -12, -10]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.4/@activity/@activities.1/@activity/@activity/@links/@children.4"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3"
@@ -2088,8 +2087,30 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.4/@activity/@activities.1/@activity/@activity/@links/@children.5"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.4/@activity/@activities.1/@activity/@activity/@links/@children.3"/>
             <bendpoints points="[25, -17, -59, 40]$[72, -49, -12, 8]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.4/@activity/@activities.1/@activity/@activity/@links/@children.4"/>
+            <bendpoints points="[25, 0, -93, 0]$[94, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.4/@activity/@activities.1/@activity/@activity/@links/@children.5"/>
+            <bendpoints points="[25, 13, -189, -98]$[190, 98, -24, -13]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -2107,6 +2128,8 @@
             namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
         <tibex:namespaceItem
             namespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+f3df083d-8a03-4d90-9e77-a2923a41bd3a+input" prefix="tns4"/>
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+f3df083d-8a03-4d90-9e77-a2923a41bd3a+output" prefix="tns5"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/customers"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/REST"/>
@@ -2158,6 +2181,8 @@
             name="Check_log-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns1:ActivityInput"
             name="Check_error-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns12:AccumulatedOutput"
+            name="InsertedCustomers" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -2263,7 +2288,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+b50ad173-3a6d-4fa5-b201-afaea653b20c+input&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;JDBCQuery-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns5:jdbcQueryActivityInput/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns6=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+b50ad173-3a6d-4fa5-b201-afaea653b20c+input&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;JDBCQuery-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns6:jdbcQueryActivityInput/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -2413,18 +2438,19 @@
                                 partnerLink="customer"
                                 portType="ns0:customer"
                                 tibex:xpdlId="fce82927-44a1-454a-806e-a5d3653ce1d6" variable="postOut-input">
-                                <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns2="http://xmlns.example.com/20260319160400PLT" version="2.0"&gt;&lt;xsl:template name="postOut-input" match="/"&gt;&lt;tns2:postResponse&gt;&lt;item&gt;&lt;xsl:value-of select="&amp;quot;Insert ended&amp;quot;"/&gt;&lt;/item&gt;&lt;/tns2:postResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://xmlns.example.com/20260319160400PLT&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;postOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;item>&#xa;            &lt;xsl:value-of select=&quot;&amp;quot;Insert ended&amp;quot;&quot;/>&#xa;        &lt;/item>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://xmlns.example.com/20260319160400PLT&quot; xmlns:tns5=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+f3df083d-8a03-4d90-9e77-a2923a41bd3a+output&quot; xmlns:tns1=&quot;http://www.example.org/customers&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;InsertedCustomers&quot;/>&#xa;    &lt;xsl:template name=&quot;postOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:customers>&#xa;            &lt;xsl:for-each select=&quot;$InsertedCustomers/tns5:resultSet/Record&quot;>&#xa;                &lt;tns1:customer>&#xa;                    &lt;xsl:if test=&quot;name&quot;>&#xa;                        &lt;tns1:name>&#xa;                            &lt;xsl:value-of select=&quot;name&quot;/>&#xa;                        &lt;/tns1:name>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;surname&quot;>&#xa;                        &lt;tns1:surname>&#xa;                            &lt;xsl:value-of select=&quot;surname&quot;/>&#xa;                        &lt;/tns1:surname>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;phonenumber&quot;>&#xa;                        &lt;tns1:phonenumber>&#xa;                            &lt;xsl:value-of select=&quot;phonenumber&quot;/>&#xa;                        &lt;/tns1:phonenumber>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tiercode&quot;>&#xa;                        &lt;tns1:tiercode>&#xa;                            &lt;xsl:value-of select=&quot;tiercode&quot;/>&#xa;                        &lt;/tns1:tiercode>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;createdate&quot;>&#xa;                        &lt;tns1:createdate>&#xa;                            &lt;xsl:value-of select=&quot;createdate&quot;/>&#xa;                        &lt;/tns1:createdate>&#xa;                    &lt;/xsl:if>&#xa;                &lt;/tns1:customer>&#xa;            &lt;/xsl:for-each>&#xa;        &lt;/tns1:customers>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
+                                <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns2="http://xmlns.example.com/20260319160400PLT" xmlns:tns5="http://www.tibco.com/namespaces/tnt/plugins/jdbc+f3df083d-8a03-4d90-9e77-a2923a41bd3a+output" xmlns:tns1="http://www.example.org/customers" version="2.0"&gt;&lt;xsl:param name="InsertedCustomers"/&gt;&lt;xsl:template name="postOut-input" match="/"&gt;&lt;tns2:postResponse&gt;&lt;item&gt;&lt;tns1:customers&gt;&lt;xsl:for-each select="$InsertedCustomers/tns5:resultSet/Record"&gt;&lt;tns1:customer&gt;&lt;xsl:if test="name"&gt;&lt;tns1:name&gt;&lt;xsl:value-of select="name"/&gt;&lt;/tns1:name&gt;&lt;/xsl:if&gt;&lt;xsl:if test="surname"&gt;&lt;tns1:surname&gt;&lt;xsl:value-of select="surname"/&gt;&lt;/tns1:surname&gt;&lt;/xsl:if&gt;&lt;xsl:if test="phonenumber"&gt;&lt;tns1:phonenumber&gt;&lt;xsl:value-of select="phonenumber"/&gt;&lt;/tns1:phonenumber&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tiercode"&gt;&lt;tns1:tiercode&gt;&lt;xsl:value-of select="tiercode"/&gt;&lt;/tns1:tiercode&gt;&lt;/xsl:if&gt;&lt;xsl:if test="createdate"&gt;&lt;tns1:createdate&gt;&lt;xsl:value-of select="createdate"/&gt;&lt;/tns1:createdate&gt;&lt;/xsl:if&gt;&lt;/tns1:customer&gt;&lt;/xsl:for-each&gt;&lt;/tns1:customers&gt;&lt;/item&gt;&lt;/tns2:postResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <bpws:targets>
                                     <bpws:target linkName="IterateTopostOut"/>
                                 </bpws:targets>
                                 <bpws:sources>
                                     <bpws:source linkName="postOutToOnMessageEnd1"/>
                                 </bpws:sources>
+                                <bpws:correlations/>
                             </bpws:reply>
                             <bpws:extensionActivity>
                                 <tibex:activityExtension
@@ -2463,7 +2489,8 @@
                                 </tibex:activityExtension>
                             </bpws:extensionActivity>
                             <bpws:scope name="Iterate"
-                                tibex:group="iterate" tibex:xpdlId="0dd152a9-9b4c-4c63-b2f1-08f684f0663f">
+                                tibex:group="iterate"
+                                tibex:indexToGlobal="false" tibex:xpdlId="0dd152a9-9b4c-4c63-b2f1-08f684f0663f">
                                 <bpws:targets>
                                     <bpws:target linkName="LogToIterate"/>
                                 </bpws:targets>
@@ -2471,7 +2498,13 @@
                                     <bpws:source linkName="IterateTopostOut"/>
                                 </bpws:sources>
                                 <bpws:sequence name="sequence" tibex:group="iterate">
-                                    <bpws:empty name="GroupInit" tibex:group="groupInit"/>
+                                    <bpws:assign name="GroupInit"
+                                    tibex:group="groupInit" validate="no">
+                                    <bpws:copy>
+                                    <bpws:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"><![CDATA[<?xml version="1.0" encoding="UTF-8"?> <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://tns.tibco.com/bw/palette/internal/accumulateoutput+ba869980-e49d-46df-ad27-5db8d92f27ed" version="2.0"> <xsl:template name="CustomerInsertedStatus" match="/"> <tns:AccumulatedOutput/></xsl:template> </xsl:stylesheet>]]></bpws:from>
+                                    <bpws:to variable="InsertedCustomers"/>
+                                    </bpws:copy>
+                                    </bpws:assign>
                                     <bpws:forEach counterName="index"
                                     name="iterate" parallel="no" tibex:group="iterate">
                                     <tibex:DesignExpression name="variableList">
@@ -2491,15 +2524,15 @@
                                     <bpws:link
                                     name="GroupStartToJDBCUpdate" tibex:linkType="SUCCESS"/>
                                     <bpws:link
-                                    name="InsertToJDBCQuery" tibex:linkType="SUCCESS"/>
-                                    <bpws:link
-                                    name="Insert_checkToLog" tibex:linkType="SUCCESSWITHCONDITION"/>
+                                    name="InsertToJDBCQuery" tibex:linkType="SUCCESSWITHCONDITION"/>
                                     <bpws:link
                                     name="Check_logToGroupEnd" tibex:linkType="SUCCESS"/>
                                     <bpws:link
-                                    name="Insert_checkToLog1" tibex:linkType="SUCCESSWITHCONDITION"/>
-                                    <bpws:link
                                     name="LogToGroupEnd" tibex:linkType="SUCCESS"/>
+                                    <bpws:link
+                                    name="Insert_checkToCheck_log" tibex:linkType="SUCCESS"/>
+                                    <bpws:link
+                                    name="InsertToCheck_error" tibex:linkType="SUCCESSWITHCONDITION"/>
                                     </bpws:links>
                                     <bpws:assign
                                     name="GroupStart"
@@ -2513,14 +2546,40 @@
                                     <bpws:to variable="SingleCustomer"/>
                                     </bpws:copy>
                                     </bpws:assign>
-                                    <bpws:empty
-                                    name="GroupEnd"
-                                    tibex:group="groupEnd" tibex:xpdlId="367024db-41c0-4634-9590-4aac69a10fc5">
+                                    <bpws:extensionActivity>
+
+                                    <tibex:activityExtension
+                                    name="InsertedCustomers"
+                                    outputVariable="InsertedCustomers"
+                                    tibex:group="groupEnd"
+                                    tibex:xpdlId="ba869980-e49d-46df-ad27-5db8d92f27ed" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
                                     <bpws:target linkName="Check_logToGroupEnd"/>
                                     <bpws:target linkName="LogToGroupEnd"/>
                                     </bpws:targets>
-                                    </bpws:empty>
+                                    <tibex:config>
+
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.internal.accumulateend"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:internalactivities="http://ns.tibco.com/bw/core/internalactivity" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+
+                                    <type href="http://ns.tibco.com/bw/core/internalactivity#//AccumulateEnd"/>
+
+                                    <value xsi:type="internalactivities:AccumulateEnd">
+                                    <activityNames>Insert_check</activityNames>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                    </tibex:activityExtension>
+                                    </bpws:extensionActivity>
                                     <bpws:extensionActivity>
 
                                     <tibex:activityExtension
@@ -2532,7 +2591,24 @@
                                     <bpws:target linkName="GroupStartToJDBCUpdate"/>
                                     </bpws:targets>
                                     <bpws:sources>
-                                    <bpws:source linkName="InsertToJDBCQuery"/>
+                                    <bpws:source linkName="InsertToJDBCQuery">
+                                    <tibex:DesignExpression>
+
+                                    <tibex:expression
+                                    expression="$Insert/noOfUpdates = 1" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    </tibex:DesignExpression>
+
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$Insert/noOfUpdates = 1]]></bpws:transitionCondition>
+                                    </bpws:source>
+                                    <bpws:source linkName="InsertToCheck_error">
+                                    <tibex:DesignExpression>
+
+                                    <tibex:expression
+                                    expression="$Insert/noOfUpdates = 0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    </tibex:DesignExpression>
+
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$Insert/noOfUpdates = 0]]></bpws:transitionCondition>
+                                    </bpws:source>
                                     </bpws:sources>
                                     <tibex:inputBindings>
 
@@ -2595,24 +2671,7 @@
                                     <bpws:target linkName="InsertToJDBCQuery"/>
                                     </bpws:targets>
                                     <bpws:sources>
-                                    <bpws:source linkName="Insert_checkToLog">
-                                    <tibex:DesignExpression>
-
-                                    <tibex:expression
-                                    expression="$Insert/noOfUpdates = 1" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                                    </tibex:DesignExpression>
-
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$Insert/noOfUpdates = 1]]></bpws:transitionCondition>
-                                    </bpws:source>
-                                    <bpws:source linkName="Insert_checkToLog1">
-                                    <tibex:DesignExpression>
-
-                                    <tibex:expression
-                                    expression="$Insert/noOfUpdates = 0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                                    </tibex:DesignExpression>
-
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$Insert/noOfUpdates = 0]]></bpws:transitionCondition>
-                                    </bpws:source>
+                                    <bpws:source linkName="Insert_checkToCheck_log"/>
                                     </bpws:sources>
                                     <tibex:inputBindings>
 
@@ -2636,7 +2695,7 @@
                                     <value
                                     maxRows="100"
                                     sharedResourceProperty="jdbcProperty"
-                                    sqlStatement="SELECT customerid AS id, name, surname&#xa;FROM customer WHERE phonenumber = ?;&#xa;"
+                                    sqlStatement="SELECT customerid AS id, &#xa;name, surname, phonenumber, tiercode, createdate&#xa;FROM customer WHERE phonenumber = ?;&#xa;"
                                     timeout="10" xsi:type="jdbcPalette:JDBCQueryActivity">
 
                                     <PreparedParameters
@@ -2660,6 +2719,24 @@
                                     columnName="surname"
                                     dataType="12"
                                     status="OptionalElement" typeName="CHARACTER VARYING"/>
+
+                                    <columnMetadata
+                                    columnIndex="4"
+                                    columnName="phonenumber"
+                                    dataType="12"
+                                    status="OptionalElement" typeName="CHARACTER VARYING"/>
+
+                                    <columnMetadata
+                                    columnIndex="5"
+                                    columnName="tiercode"
+                                    dataType="4"
+                                    status="OptionalElement" typeName="INTEGER"/>
+
+                                    <columnMetadata
+                                    columnIndex="6"
+                                    columnName="createdate"
+                                    dataType="91"
+                                    status="OptionalElement" typeName="DATE"/>
                                     </value>
                                     </properties>
                                     </activityConfig>
@@ -2674,7 +2751,7 @@
                                     name="Check_log"
                                     tibex:xpdlId="57e2c817-35f0-494c-9aed-7d4d2a2369ff" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
-                                    <bpws:target linkName="Insert_checkToLog"/>
+                                    <bpws:target linkName="Insert_checkToCheck_log"/>
                                     </bpws:targets>
                                     <bpws:sources>
                                     <bpws:source linkName="Check_logToGroupEnd"/>
@@ -2682,7 +2759,7 @@
                                     <tibex:inputBindings>
 
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns1=&quot;http://www.example.org/customers&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;SingleCustomer&quot;/>&lt;xsl:param name=&quot;Insert_check&quot;/>&lt;xsl:template name=&quot;Check_log-input&quot; match=&quot;/&quot;>&lt;tns:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;Customer &amp;quot;, $SingleCustomer/tns1:name, &amp;quot; &amp;quot;, $SingleCustomer/tns1:surname, &amp;quot;  inserted with ID :&amp;quot;, xsd:string( $Insert_check/Record[1]/id))&quot;/>&lt;/message>&lt;/tns:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns1=&quot;http://www.example.org/customers&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;SingleCustomer&quot;/>&lt;xsl:param name=&quot;Insert_check&quot;/>&lt;xsl:template name=&quot;Check_log-input&quot; match=&quot;/&quot;>&lt;tns:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;Customer &amp;quot;, $SingleCustomer/tns1:name, &amp;quot; &amp;quot;, $SingleCustomer/tns1:surname, &amp;quot; added to customers list with ID: &amp;quot;, xsd:string($Insert_check/Record[1]/id))&quot;/>&lt;/message>&lt;/tns:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
 
@@ -2716,7 +2793,7 @@
                                     name="Check_error"
                                     tibex:xpdlId="3e98ef6c-44d0-4619-a08e-7bc539c69f16" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
-                                    <bpws:target linkName="Insert_checkToLog1"/>
+                                    <bpws:target linkName="InsertToCheck_error"/>
                                     </bpws:targets>
                                     <bpws:sources>
                                     <bpws:source linkName="LogToGroupEnd"/>

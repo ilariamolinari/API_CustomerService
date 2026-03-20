@@ -27,9 +27,9 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "a string to be returned",
+            "description" : "a customers to be returned",
             "schema" : {
-              "type" : "string"
+              "$ref" : "#/definitions/customers"
             }
           }
         }
