@@ -4,6 +4,9 @@
     <sca:interface.wsdl xmi:id="_3D6RYCOlEfG5c4xDyo7NRA" interface="http://xmlns.example.com/20260319160400PLT#wsdl.interface(customer)" scaext:wsdlLocation="../Processes/api_customer_service/Process.bwp"/>
     <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_3D-i0COlEfG5c4xDyo7NRA" name="RestService" path="/customer" docBasePath="http://localhost:7777/API_Customer_Service" docResourcePath="Customer" basePath="/" connector="api_customer_service.Customer" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/api_customer_service.Process-Customer.json">
       <operation xmi:id="_3D-i0iOlEfG5c4xDyo7NRA" operationName="get" nickname="get-customer" httpMethod="GET" notes="getCustomer" responseStyle="element" requestStyle="element" outputPartName="item">
+        <parameters xmi:id="_MEP88CR9EfGiJu5i6I0cvw">
+          <parameterMapping xmi:id="_MEP88SR9EfGiJu5i6I0cvw" parameterName="tiercode" parameterType="Query" dataType="string"/>
+        </parameters>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>

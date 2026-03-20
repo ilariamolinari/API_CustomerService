@@ -10,6 +10,7 @@
     xmlns:ns10="http://www.tibco.com/namespaces/tnt/plugins/jdbc+f3df083d-8a03-4d90-9e77-a2923a41bd3a+output"
     xmlns:ns11="http://tns.tibco.com/bw/palette/internal/accumulateoutput+501e9170-bb74-4933-902f-5e65a597a0c0"
     xmlns:ns12="http://tns.tibco.com/bw/palette/internal/accumulateoutput+ba869980-e49d-46df-ad27-5db8d92f27ed"
+    xmlns:ns13="http://xmlns.example.com/Customer/parameters"
     xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b50ad173-3a6d-4fa5-b201-afaea653b20c+input"
     xmlns:ns3="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b50ad173-3a6d-4fa5-b201-afaea653b20c+output"
     xmlns:ns4="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.JDBCQuery"
@@ -37,6 +38,7 @@
         <task name="Select">
             <endingVariables>
                 <variable>Select-input</variable>
+                <variable>Mapper1</variable>
             </endingVariables>
         </task>
         <task name="Mapper">
@@ -48,6 +50,12 @@
         <task name="Get_end">
             <endingVariables>
                 <variable>Get_end-input</variable>
+            </endingVariables>
+        </task>
+        <task name="Mapper1">
+            <endingVariables>
+                <variable>Mapper1-input</variable>
+                <variable>get</variable>
             </endingVariables>
         </task>
         <task name="postOut">
@@ -278,6 +286,10 @@
             <element name="jdbcQueryActivityInput">
                 <complexType>
                     <sequence>
+                        <element maxOccurs="1" minOccurs="1"
+                            name="tiercode" nillable="true" type="string"/>
+                        <element maxOccurs="1" minOccurs="1"
+                            name="tiercode" nillable="true" type="string"/>
                         <element maxOccurs="1" minOccurs="0"
                             name="ServerTimeZone" type="string"/>
                         <element maxOccurs="1" minOccurs="0"
@@ -613,6 +625,7 @@
             targetNamespace="http://xmlns.example.com/20260319160400PLT"
             xmlns:extns="http://www.example.org/customers"
             xmlns:extns1="http://tns.tibco.com/bw/REST"
+            xmlns:extns2="http://xmlns.example.com/Customer/parameters"
             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
             xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
             xmlns:tns="http://xmlns.example.com/20260319160400PLT"
@@ -623,9 +636,12 @@
             </plnk:partnerLinkType>
             <wsdl:import namespace="http://www.example.org/customers"/>
             <wsdl:import namespace="http://tns.tibco.com/bw/REST"/>
+            <wsdl:import namespace="http://xmlns.example.com/Customer/parameters"/>
             <wsdl:message name="getRequest">
                 <wsdl:part element="extns1:httpHeaders"
                     name="httpHeaders" tibex:source="bw.rest"/>
+                <wsdl:part element="extns2:customerGetParameters"
+                    name="parameters" tibex:source="bw.rest"/>
             </wsdl:message>
             <wsdl:message name="getResponse">
                 <wsdl:part element="extns:customers" name="item" tibex:hasMultipleNamespaces="false"/>
@@ -966,8 +982,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.4"/>
 
                                     <layoutConstraint
-                                    x="114"
-                                    xsi:type="notation:Bounds" y="16"/>
+                                    x="320"
+                                    xsi:type="notation:Bounds" y="4"/>
                                     </children>
 
                                     <children type="4002">
@@ -1020,8 +1036,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.5"/>
 
                                     <layoutConstraint
-                                    x="256"
-                                    xsi:type="notation:Bounds" y="16"/>
+                                    x="462"
+                                    xsi:type="notation:Bounds" y="10"/>
                                     </children>
 
                                     <children type="4002">
@@ -1074,8 +1090,62 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.6"/>
 
                                     <layoutConstraint
-                                    x="368"
-                                    xsi:type="notation:Bounds" y="16"/>
+                                    x="600"
+                                    xsi:type="notation:Bounds" y="10"/>
+                                    </children>
+
+                                    <children type="4002">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.7"/>
+
+                                    <layoutConstraint
+                                    x="133"
+                                    xsi:type="notation:Bounds" y="10"/>
                                     </children>
 
                                     <styles xsi:type="notation:DrawerStyle"/>
@@ -1099,7 +1169,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity"/>
 
                                     <layoutConstraint
-                                    height="113"
+                                    height="120"
                                     width="1027" xsi:type="notation:Bounds"/>
                                     </children>
 
@@ -1948,17 +2018,6 @@
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
             target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
             <children type="6002">
@@ -1966,7 +2025,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.2"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.1"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1977,7 +2036,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.3"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.2"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1988,7 +2047,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.4"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.3"/>
             <bendpoints points="[25, -6, -436, 0]$[437, 0, -24, 6]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1999,7 +2058,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.5"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.4"/>
             <bendpoints points="[25, 3, -147, -15]$[160, 16, -12, -2]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -2112,6 +2171,28 @@
             <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.4/@activity/@activities.1/@activity/@activity/@links/@children.5"/>
             <bendpoints points="[25, 13, -189, -98]$[190, 98, -24, -13]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.5"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.6"/>
+            <bendpoints points="[25, -6, -162, 0]$[163, 0, -24, 6]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -2130,9 +2211,14 @@
             namespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+f3df083d-8a03-4d90-9e77-a2923a41bd3a+input" prefix="tns4"/>
         <tibex:namespaceItem
             namespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+f3df083d-8a03-4d90-9e77-a2923a41bd3a+output" prefix="tns5"/>
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b50ad173-3a6d-4fa5-b201-afaea653b20c+input" prefix="tns6"/>
+        <tibex:namespaceItem
+            namespace="http://xmlns.example.com/Customer/parameters" prefix="tns7"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/customers"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/REST"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://xmlns.example.com/Customer/parameters"/>
     <bpws:partnerLinks>
         <bpws:partnerLink myRole="use" name="customer"
             partnerLinkType="ns0:partnerLinkType"
@@ -2183,6 +2269,10 @@
             name="Check_error-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns12:AccumulatedOutput"
             name="InsertedCustomers" sca-bpel:internal="true"/>
+        <bpws:variable element="ns13:customerGetParameters"
+            name="Mapper1-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns13:customerGetParameters"
+            name="Mapper1" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -2203,11 +2293,12 @@
                         <bpws:flow name="flow1">
                             <bpws:links>
                                 <bpws:link name="OnMessageStartToLog" tibex:linkType="SUCCESS"/>
-                                <bpws:link name="Get_startToJDBCQuery" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="SelectToMapper" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="MapperToLog" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="Get_endTogetOut" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="getOutToOnMessageEnd" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="Get_startToMapper1" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="Mapper1ToSelect" tibex:linkType="SUCCESS"/>
                             </bpws:links>
                             <bpws:empty name="OnMessageStart"
                                 tibex:constructor="onMessageStart" tibex:xpdlId="0bc0af49-7995-4300-a1af-c359b0e9fc8b">
@@ -2247,11 +2338,11 @@
                                     <bpws:target linkName="OnMessageStartToLog"/>
                                     </bpws:targets>
                                     <bpws:sources>
-                                    <bpws:source linkName="Get_startToJDBCQuery"/>
+                                    <bpws:source linkName="Get_startToMapper1"/>
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Get_start-input&quot; match=&quot;/&quot;>&lt;tns:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;&amp;quot;GETting started...&amp;quot;&quot;/>&lt;/message>&lt;/tns:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns7=&quot;http://xmlns.example.com/Customer/parameters&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Get_start-input&quot; match=&quot;/&quot;>&lt;tns:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;&amp;quot;GETting started...&amp;quot;&quot;/>&lt;/message>&lt;/tns:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -2281,14 +2372,14 @@
                                     outputVariable="Select"
                                     tibex:xpdlId="b50ad173-3a6d-4fa5-b201-afaea653b20c" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
-                                    <bpws:target linkName="Get_startToJDBCQuery"/>
+                                    <bpws:target linkName="Mapper1ToSelect"/>
                                     </bpws:targets>
                                     <bpws:sources>
                                     <bpws:source linkName="SelectToMapper"/>
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns6=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+b50ad173-3a6d-4fa5-b201-afaea653b20c+input&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;JDBCQuery-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns6:jdbcQueryActivityInput/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns7=&quot;http://xmlns.example.com/Customer/parameters&quot; xmlns:tns6=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+b50ad173-3a6d-4fa5-b201-afaea653b20c+input&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Mapper1&quot;/>&lt;xsl:template name=&quot;Select-input&quot; match=&quot;/&quot;>&lt;tns6:jdbcQueryActivityInput>&lt;tiercode>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($Mapper1/tns7:tiercode)&quot;>&lt;xsl:value-of select=&quot;$Mapper1/tns7:tiercode&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/tiercode>&lt;tiercode>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($Mapper1/tns7:tiercode)&quot;>&lt;xsl:value-of select=&quot;$Mapper1/tns7:tiercode&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/tiercode>&lt;/tns6:jdbcQueryActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -2302,8 +2393,16 @@
                                     <type href="http://ns.tibco.com/bw/palette/jdbc#//JDBCQueryActivity"/>
                                     <value maxRows="100"
                                     sharedResourceProperty="jdbcProperty"
-                                    sqlStatement="SELECT name, surname, phonenumber, tiercode, createdate &#xd;&#xa;FROM customer;"
+                                    sqlStatement="SELECT name, surname, phonenumber, tiercode, createdate &#xd;&#xa;FROM customer&#xd;&#xa;WHERE (? = '0' OR tiercode = CAST (? AS INTEGER));"
                                     timeout="10" xsi:type="jdbcPalette:JDBCQueryActivity">
+
+                                    <PreparedParameters
+                                    DataType="12"
+                                    DataTypeDisplayValue="VARCHAR" ParameterName="tiercode"/>
+
+                                    <PreparedParameters
+                                    DataType="12"
+                                    DataTypeDisplayValue="VARCHAR" ParameterName="tiercode"/>
                                     <columnMetadata
                                     columnIndex="1"
                                     columnName="name"
@@ -2408,6 +2507,44 @@
                                     </tibex:config>
                                 </tibex:activityExtension>
                             </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns7=&quot;http://xmlns.example.com/Customer/parameters&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;get&quot;/>&lt;xsl:template name=&quot;Mapper1-input&quot; match=&quot;/&quot;>&lt;tns7:customerGetParameters>&lt;xsl:if test=&quot;if (exists($get/parameters/tns7:customerGetParameters/tns7:tiercode)) then $get/parameters/tns7:customerGetParameters/tns7:tiercode&amp;#xD;&amp;#xA;else '0'&quot;>&lt;tns7:tiercode>&lt;xsl:value-of select=&quot;if (exists($get/parameters/tns7:customerGetParameters/tns7:tiercode)) then $get/parameters/tns7:customerGetParameters/tns7:tiercode&amp;#xD;&amp;#xA;else '0'&quot;/>&lt;/tns7:tiercode>&lt;/xsl:if>&lt;/tns7:customerGetParameters>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Mapper1-input"
+                                    name="Mapper1"
+                                    outputVariable="Mapper1"
+                                    tibex:xpdlId="372aed33-ff1e-4d20-9c0f-487e929820a4" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="Get_startToMapper1"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="Mapper1ToSelect"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns7=&quot;http://xmlns.example.com/Customer/parameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;get.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;Mapper1-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns7:customerGetParameters>&#xa;            &lt;xsl:if test=&quot;if (exists($get.parameters/tns7:tiercode)) then $get.parameters/tns7:tiercode&amp;#xD;&amp;#xA;else '0'&quot;>&#xa;                &lt;tns7:tiercode>&#xa;                    &lt;xsl:value-of select=&quot;if (exists($get.parameters/tns7:tiercode)) then $get.parameters/tns7:tiercode&amp;#xD;&amp;#xA;else '0'&quot;/>&#xa;                &lt;/tns7:tiercode>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns7:customerGetParameters>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.generalactivities.mapper"
+                                    version="6.0.0.001"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities"
+                                    xmlns:parameters="http://xmlns.example.com/Customer/parameters" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Mapper"/>
+                                    <value
+                                    inputQName="parameters:customerGetParameters" xsi:type="generalactivities:Mapper"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
                         </bpws:flow>
                     </bpws:scope>
                 </bpws:onMessage>
@@ -2489,8 +2626,7 @@
                                 </tibex:activityExtension>
                             </bpws:extensionActivity>
                             <bpws:scope name="Iterate"
-                                tibex:group="iterate"
-                                tibex:indexToGlobal="false" tibex:xpdlId="0dd152a9-9b4c-4c63-b2f1-08f684f0663f">
+                                tibex:group="iterate" tibex:xpdlId="0dd152a9-9b4c-4c63-b2f1-08f684f0663f">
                                 <bpws:targets>
                                     <bpws:target linkName="LogToIterate"/>
                                 </bpws:targets>
