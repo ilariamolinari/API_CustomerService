@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/customers_id" xmlns:tns="http://www.example.org/customers_id" elementFormDefault="qualified">
+
+    <element name="customers_id" type="tns:customers_id_type"></element>
+    
+    <complexType name="customers_id_type">
+    	<sequence>
+    		<element name="customer_id" type="tns:customer_id_type" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="customer_id_type">
+    	<sequence>
+    		<element name="id" type="integer" minOccurs="0" maxOccurs="1"></element>
+    		<element name="name" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="surname" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="phonenumber" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="tiercode" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="createdate" type="date" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+</schema>

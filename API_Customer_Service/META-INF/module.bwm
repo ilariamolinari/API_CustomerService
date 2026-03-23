@@ -14,6 +14,10 @@
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
+      <operation xmi:id="_6xIHkCamEfGpYc4JoF0PNg" operationName="put" nickname="put-customer" httpMethod="PUT" notes="putCustomer" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
       <parameters xmi:id="_3FnhkCOlEfG5c4xDyo7NRA"/>
       <advancedConfig xmi:id="_3D-i0SOlEfG5c4xDyo7NRA" blockingQueueSize="2147483647"/>
     </scaext:binding>

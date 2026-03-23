@@ -79,6 +79,30 @@
             }
           }
         }
+      },
+      "put" : {
+        "summary" : "putCustomer",
+        "description" : "putCustomer",
+        "operationId" : "put-customer",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/customers_id"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a customers_id to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/customers_id"
+            }
+          }
+        }
       }
     }
   },
@@ -90,6 +114,43 @@
           "type" : "array",
           "items" : {
             "$ref" : "#/definitions/customer",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "customer_id" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "surname" : {
+          "type" : "string"
+        },
+        "phonenumber" : {
+          "type" : "string"
+        },
+        "tiercode" : {
+          "type" : "string"
+        },
+        "createdate" : {
+          "type" : "string",
+          "format" : "date"
+        }
+      }
+    },
+    "customers_id" : {
+      "type" : "object",
+      "properties" : {
+        "customer_id" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/customer_id",
             "uniqueItems" : false
           }
         }
