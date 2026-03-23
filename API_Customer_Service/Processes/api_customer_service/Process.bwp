@@ -945,6 +945,8 @@
                             name="surname" nillable="true" type="string"/>
                         <element maxOccurs="1" minOccurs="1"
                             name="phonenumber" nillable="true" type="string"/>
+                        <element maxOccurs="1" minOccurs="1"
+                            name="tiercode" nillable="true" type="string"/>
                         <element maxOccurs="1" minOccurs="1" name="id"
                             nillable="true" type="int"/>
                         <element maxOccurs="1" minOccurs="0"
@@ -4302,7 +4304,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
-                                    height="1672"
+                                    height="1722"
                                     width="561" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
@@ -4317,7 +4319,7 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
-                                    <layoutConstraint height="1682"
+                                    <layoutConstraint height="1732"
                                     width="1161" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
@@ -4327,7 +4329,7 @@
                             <styles xsi:type="bwnotation:BackgroundStyle"/>
                             <styles xsi:type="bwnotation:ResizingStyle"/>
                             <element href="//0/@process/@activity"/>
-                            <layoutConstraint height="1682" width="1164" xsi:type="notation:Bounds"/>
+                            <layoutConstraint height="1732" width="1164" xsi:type="notation:Bounds"/>
                         </children>
                         <styles xsi:type="notation:SortingStyle"/>
                         <styles xsi:type="notation:FilteringStyle"/>
@@ -4337,7 +4339,7 @@
                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                     <styles xsi:type="bwnotation:ResizingStyle"/>
                     <element href="//0/@process/@activity"/>
-                    <layoutConstraint height="1706" width="1164" x="1"
+                    <layoutConstraint height="1756" width="1164" x="1"
                         xsi:type="notation:Bounds" y="1"/>
                 </children>
                 <styles xsi:type="notation:SortingStyle"/>
@@ -4346,7 +4348,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="1758" width="1506" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="1808" width="1506" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -6601,7 +6603,7 @@
                                     <tibex:inputBindings>
 
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns10=&quot;http://www.example.org/customers_id&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;SingleCustomer&quot;/>&lt;xsl:template name=&quot;Debug_log-input&quot; match=&quot;/&quot;>&lt;tns:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;Name: &amp;quot;, $SingleCustomer/tns10:name, &amp;quot;. Exists: &amp;quot;, xsd:string(exists($SingleCustomer/tns10:name)))&quot;/>&lt;/message>&lt;/tns:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns10=&quot;http://www.example.org/customers_id&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Debug_log-input&quot; match=&quot;/&quot;>&lt;tns:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;&amp;quot;Change for debugging phase&amp;quot;&quot;/>&lt;/message>&lt;/tns:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
 
@@ -6644,7 +6646,7 @@
                                     <tibex:inputBindings>
 
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns10=&quot;http://www.example.org/customers_id&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;SingleCustomer&quot;/>&lt;xsl:template name=&quot;Mapper3-input&quot; match=&quot;/&quot;>&lt;tns10:customers_id>&lt;tns10:customer_id>&lt;xsl:if test=&quot;$SingleCustomer/tns10:id&quot;>&lt;tns10:id>&lt;xsl:value-of select=&quot;$SingleCustomer/tns10:id&quot;/>&lt;/tns10:id>&lt;/xsl:if>&lt;xsl:if test=&quot;if (exists($SingleCustomer/tns10:name)) then $SingleCustomer/tns10:name&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;>&lt;tns10:name>&lt;xsl:value-of select=&quot;if (exists($SingleCustomer/tns10:name)) then $SingleCustomer/tns10:name&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;/>&lt;/tns10:name>&lt;/xsl:if>&lt;xsl:if test=&quot;if (exists($SingleCustomer/tns10:surname)) then $SingleCustomer/tns10:surname&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;>&lt;tns10:surname>&lt;xsl:value-of select=&quot;if (exists($SingleCustomer/tns10:surname)) then $SingleCustomer/tns10:surname&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;/>&lt;/tns10:surname>&lt;/xsl:if>&lt;xsl:if test=&quot;if (exists($SingleCustomer/tns10:phonenumber)) then $SingleCustomer/tns10:phonenumber&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;>&lt;tns10:phonenumber>&lt;xsl:value-of select=&quot;if (exists($SingleCustomer/tns10:phonenumber)) then $SingleCustomer/tns10:phonenumber&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;/>&lt;/tns10:phonenumber>&lt;/xsl:if>&lt;xsl:if test=&quot;if (exists($SingleCustomer/tns10:tiercode)) then $SingleCustomer/tns10:tiercode&amp;#xD;&amp;#xA;else &amp;quot;&amp;quot;&quot;>&lt;tns10:tiercode>&lt;xsl:value-of select=&quot;if (exists($SingleCustomer/tns10:tiercode)) then $SingleCustomer/tns10:tiercode&amp;#xD;&amp;#xA;else &amp;quot;&amp;quot;&quot;/>&lt;/tns10:tiercode>&lt;/xsl:if>&lt;xsl:if test=&quot;$SingleCustomer/tns10:createdate&quot;>&lt;tns10:createdate>&lt;xsl:value-of select=&quot;$SingleCustomer/tns10:createdate&quot;/>&lt;/tns10:createdate>&lt;/xsl:if>&lt;/tns10:customer_id>&lt;/tns10:customers_id>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns10=&quot;http://www.example.org/customers_id&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;SingleCustomer&quot;/>&lt;xsl:template name=&quot;Mapper3-input&quot; match=&quot;/&quot;>&lt;tns10:customers_id>&lt;tns10:customer_id>&lt;xsl:if test=&quot;$SingleCustomer/tns10:id&quot;>&lt;tns10:id>&lt;xsl:value-of select=&quot;$SingleCustomer/tns10:id&quot;/>&lt;/tns10:id>&lt;/xsl:if>&lt;xsl:if test=&quot;if (exists($SingleCustomer/tns10:name)) then $SingleCustomer/tns10:name&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;>&lt;tns10:name>&lt;xsl:value-of select=&quot;if (exists($SingleCustomer/tns10:name)) then $SingleCustomer/tns10:name&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;/>&lt;/tns10:name>&lt;/xsl:if>&lt;xsl:if test=&quot;if (exists($SingleCustomer/tns10:surname)) then $SingleCustomer/tns10:surname&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;>&lt;tns10:surname>&lt;xsl:value-of select=&quot;if (exists($SingleCustomer/tns10:surname)) then $SingleCustomer/tns10:surname&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;/>&lt;/tns10:surname>&lt;/xsl:if>&lt;xsl:if test=&quot;if (exists($SingleCustomer/tns10:phonenumber)) then $SingleCustomer/tns10:phonenumber&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;>&lt;tns10:phonenumber>&lt;xsl:value-of select=&quot;if (exists($SingleCustomer/tns10:phonenumber)) then $SingleCustomer/tns10:phonenumber&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;/>&lt;/tns10:phonenumber>&lt;/xsl:if>&lt;xsl:if test=&quot;if (exists($SingleCustomer/tns10:tiercode)) then $SingleCustomer/tns10:tiercode&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;>&lt;tns10:tiercode>&lt;xsl:value-of select=&quot;if (exists($SingleCustomer/tns10:tiercode)) then $SingleCustomer/tns10:tiercode&amp;#xD;&amp;#xA;else &amp;quot; &amp;quot;&quot;/>&lt;/tns10:tiercode>&lt;/xsl:if>&lt;xsl:if test=&quot;$SingleCustomer/tns10:createdate&quot;>&lt;tns10:createdate>&lt;xsl:value-of select=&quot;$SingleCustomer/tns10:createdate&quot;/>&lt;/tns10:createdate>&lt;/xsl:if>&lt;/tns10:customer_id>&lt;/tns10:customers_id>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
 
@@ -6686,7 +6688,7 @@
                                     <tibex:inputBindings>
 
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns14=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+282b31a6-64b8-48d9-8547-f5d5008651a4+input&quot; xmlns:tns10=&quot;http://www.example.org/customers_id&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Mapper3&quot;/>&lt;xsl:template name=&quot;Partial_Update-input&quot; match=&quot;/&quot;>&lt;tns14:jdbcUpdateActivityInput>&lt;name>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($Mapper3/tns10:customer_id[1]/tns10:name)&quot;>&lt;xsl:value-of select=&quot;$Mapper3/tns10:customer_id[1]/tns10:name&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/name>&lt;surname>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($Mapper3/tns10:customer_id[1]/tns10:surname)&quot;>&lt;xsl:value-of select=&quot;$Mapper3/tns10:customer_id[1]/tns10:surname&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/surname>&lt;phonenumber>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($Mapper3/tns10:customer_id[1]/tns10:phonenumber)&quot;>&lt;xsl:value-of select=&quot;$Mapper3/tns10:customer_id[1]/tns10:phonenumber&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/phonenumber>&lt;id>&lt;xsl:value-of select=&quot;xsd:int($Mapper3/tns10:customer_id[1]/tns10:id)&quot;/>&lt;/id>&lt;/tns14:jdbcUpdateActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns14=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+282b31a6-64b8-48d9-8547-f5d5008651a4+input&quot; xmlns:tns10=&quot;http://www.example.org/customers_id&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Mapper3&quot;/>&lt;xsl:template name=&quot;Partial_Update-input&quot; match=&quot;/&quot;>&lt;tns14:jdbcUpdateActivityInput>&lt;name>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($Mapper3/tns10:customer_id[1]/tns10:name)&quot;>&lt;xsl:value-of select=&quot;$Mapper3/tns10:customer_id[1]/tns10:name&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/name>&lt;surname>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($Mapper3/tns10:customer_id[1]/tns10:surname)&quot;>&lt;xsl:value-of select=&quot;$Mapper3/tns10:customer_id[1]/tns10:surname&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/surname>&lt;phonenumber>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($Mapper3/tns10:customer_id[1]/tns10:phonenumber)&quot;>&lt;xsl:value-of select=&quot;$Mapper3/tns10:customer_id[1]/tns10:phonenumber&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/phonenumber>&lt;tiercode>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($Mapper3/tns10:customer_id[1]/tns10:tiercode)&quot;>&lt;xsl:value-of select=&quot;$Mapper3/tns10:customer_id[1]/tns10:tiercode&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/tiercode>&lt;id>&lt;xsl:value-of select=&quot;xsd:int($Mapper3/tns10:customer_id[1]/tns10:id)&quot;/>&lt;/id>&lt;/tns14:jdbcUpdateActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
 
@@ -6704,7 +6706,7 @@
 
                                     <value
                                     sharedResourceProperty="jdbcProperty"
-                                    sqlStatement="UPDATE customer&#xd;&#xa;SET &#xd;&#xa;&#x9;name = COALESCE(NULLIF(?, ' '), name),&#xd;&#xa;&#x9;surname = COALESCE(NULLIF(?, ' '), surname),&#xd;&#xa;&#x9;phonenumber = COALESCE(NULLIF(?, ' '), phonenumber)&#xd;&#xa;WHERE customerid = ?"
+                                    sqlStatement="UPDATE customer&#xd;&#xa;SET &#xd;&#xa;&#x9;name = COALESCE(NULLIF(?, ' '), name),&#xd;&#xa;&#x9;surname = COALESCE(NULLIF(?, ' '), surname),&#xd;&#xa;&#x9;phonenumber = COALESCE(NULLIF(?, ' '), phonenumber),&#xd;&#xa;&#x9;tiercode = COALESCE(CAST(NULLIF(?, ' ') AS INTEGER), tiercode)&#xd;&#xa;WHERE customerid = ?"
                                     timeout="10" xsi:type="jdbcPalette:JDBCUpdateActivity">
 
                                     <PreparedParameters
@@ -6718,6 +6720,10 @@
                                     <PreparedParameters
                                     DataType="12"
                                     DataTypeDisplayValue="VARCHAR" ParameterName="phonenumber"/>
+
+                                    <PreparedParameters
+                                    DataType="12"
+                                    DataTypeDisplayValue="VARCHAR" ParameterName="tiercode"/>
 
                                     <PreparedParameters
                                     DataType="4"
