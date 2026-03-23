@@ -19,6 +19,20 @@
     </scaext:binding>
     <scact:bindingAdjunct xmi:id="_3D-i0yOlEfG5c4xDyo7NRA" bindingName="RestService"/>
   </sca:service>
+  <sca:service xmi:id="_XZOuQiaYEfGC4dVKaOBWcQ" name="customer1" promote="ComponentProcess/customer1">
+    <sca:interface.wsdl xmi:id="_XZxg0CaYEfGC4dVKaOBWcQ" interface="http://xmlns.example.com/20260319160400PLT#wsdl.interface(customer1)" scaext:wsdlLocation="../Processes/api_customer_service/Process.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_XZ3AYCaYEfGC4dVKaOBWcQ" name="RestService1" path="/customer/{id}" docBasePath="http://localhost:7777/API_Customer_Service" docResourcePath="Customer" basePath="/" connector="api_customer_service.Customer" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/api_customer_service.Process-Customer.json">
+      <operation xmi:id="_XZ7R0CaYEfGC4dVKaOBWcQ" operationName="get" nickname="get-customer" httpMethod="GET" notes="getCustomer" responseStyle="element" requestStyle="element" outputPartName="item">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_XbR8sCaYEfGC4dVKaOBWcQ">
+        <parameterMapping xmi:id="_XbR8sSaYEfGC4dVKaOBWcQ" parameterName="id" parameterType="Path" required="true"/>
+      </parameters>
+      <advancedConfig xmi:id="_XZ3AYSaYEfGC4dVKaOBWcQ" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_XZ7R0SaYEfGC4dVKaOBWcQ" bindingName="RestService1"/>
+  </sca:service>
   <sca:property xmi:id="_3ncRsCOkEfG5c4xDyo7NRA" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_3nhxQCOkEfG5c4xDyo7NRA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_3nhxQSOkEfG5c4xDyo7NRA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
@@ -32,6 +46,9 @@
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_3KAu0SOkEfG5c4xDyo7NRA" processName="api_customer_service.Process"/>
     <sca:service xmi:id="_3DwgYCOlEfG5c4xDyo7NRA" name="customer">
       <sca:interface.wsdl xmi:id="_3DwgYSOlEfG5c4xDyo7NRA" interface="http://xmlns.example.com/20260319160400PLT#wsdl.interface(customer)" scaext:wsdlLocation="../Processes/api_customer_service/Process.bwp"/>
+    </sca:service>
+    <sca:service xmi:id="_XZOuQCaYEfGC4dVKaOBWcQ" name="customer1">
+      <sca:interface.wsdl xmi:id="_XZOuQSaYEfGC4dVKaOBWcQ" interface="http://xmlns.example.com/20260319160400PLT#wsdl.interface(customer1)" scaext:wsdlLocation="../Processes/api_customer_service/Process.bwp"/>
     </sca:service>
   </sca:component>
 </sca:composite>
