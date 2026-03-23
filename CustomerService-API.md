@@ -58,11 +58,11 @@ POST /customer
 
 NOTE: By using this method, customerid is automatically generated to avoid conflicts
 
-### UPDATE customer ###
+### UPDATE customer (PUT) ###
 
  Allows to overwrite all information about an existing customer by knowing its customerid.
 
- The request body needs to be in JSON format shown in the example.
+ The request body needs to be in JSON format as shown in the example.
 
 ```
 PUT /customer
@@ -84,8 +84,38 @@ WARNING: This method overwrites existing customer information, be sure to insert
 
 WARNING2: If the ID is unassigned, this method insert a new customer with the chosen ID.
 
- 
+ ### UPDATE customer (PATCH) ###
 
+ Allows to update only some information regarding a customer.
 
+The request body needs to be in JSON format, as shown in the previous example (PUT) where the sole mandatory entry id "id".
 
+Example to modfy phonenumber and tiercode of customer with ID=17:
 
+```
+PATCH /customer
+
+{
+  "customer_id": [
+    {
+      "id": 17,
+      "phonenumber": "3333333333",
+      "tiercode": "1"
+    }
+  ]
+}
+```
+
+# Nota per me: #
+
+## Ancora da aggiungere ##
+
+createdate (che ancora non si può modificare
+
+throw per quando l customerid non esiste (non si può modificare un customer che non esiste)
+
+e un catch per il conflitto su phonenumber che gia gestisce sql
+
+aggiungere nella documentazione cosa esce dai vari metodi
+
+Domani riscarica da qui che si è piantata di nuovo la macchina ciao
