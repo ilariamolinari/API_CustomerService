@@ -103,6 +103,30 @@
             }
           }
         }
+      },
+      "patch" : {
+        "summary" : "patchCustomer",
+        "description" : "patchCustomer",
+        "operationId" : "patch-customer",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/customers_id"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a customers_id to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/customers_id"
+            }
+          }
+        }
       }
     }
   },
