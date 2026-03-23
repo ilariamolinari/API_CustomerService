@@ -184,6 +184,11 @@
                 <variable>Insert2</variable>
             </endingVariables>
         </task>
+        <task name="Put_end">
+            <endingVariables>
+                <variable>Put_end-input</variable>
+            </endingVariables>
+        </task>
     </tibex:VariableDescriptor>
     <tibex:Types>
         <xs:schema attributeFormDefault="unqualified"
@@ -3303,6 +3308,60 @@
                                     xsi:type="notation:Bounds" y="42"/>
                                     </children>
 
+                                    <children type="4002">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.3/@activity/@activity/@activities.5"/>
+
+                                    <layoutConstraint
+                                    x="688"
+                                    xsi:type="notation:Bounds" y="137"/>
+                                    </children>
+
                                     <styles xsi:type="notation:DrawerStyle"/>
 
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -3324,7 +3383,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.3/@activity/@activity"/>
 
                                     <layoutConstraint
-                                    height="345"
+                                    height="389"
                                     width="1027" xsi:type="notation:Bounds"/>
                                     </children>
 
@@ -3766,17 +3825,6 @@
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.3/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.3/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.3/@activity/@activity/@links/@children.2"/>
-            <bendpoints points="[173, -19, -348, 38]$[497, -54, -24, 3]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.3/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
             target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.3/@children.2/@children.0" type="4006">
             <children type="6002">
@@ -3784,7 +3832,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.3/@activity/@activity/@links/@children.3"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.3/@activity/@activity/@links/@children.2"/>
             <bendpoints points="[25, -5, -149, 31]$[162, -34, -12, 2]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -3852,6 +3900,28 @@
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.0/@messages.3/@activity/@activity/@activities.4/@activity/@activities.1/@activity/@activity/@links/@children.6"/>
             <bendpoints points="[25, -10, -124, 51]$[137, -57, -12, 4]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.3/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.3/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.3/@activity/@activity/@links/@children.3"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.3/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.3/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.3/@activity/@activity/@links/@children.4"/>
+            <bendpoints points="[25, -14, -104, 59]$[105, -59, -24, 14]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -3989,6 +4059,7 @@
             name="Insert2" sca-bpel:internal="true"/>
         <bpws:variable element="ns8:ActivityErrorData"
             name="_error_Inser" sca-bpel:internal="true"/>
+        <bpws:variable element="ns1:ActivityInput" name="Put_end-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -4918,8 +4989,9 @@
                             <bpws:links>
                                 <bpws:link name="OnMessageStart3ToLog" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="Put_startToIterate1" tibex:linkType="SUCCESS"/>
-                                <bpws:link name="Iterate1ToputOut" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="putOutToOnMessageEnd3" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="Iterate1ToLog" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="Put_endToputOut" tibex:linkType="SUCCESS"/>
                             </bpws:links>
                             <bpws:empty name="OnMessageStart3"
                                 tibex:constructor="onMessageStart" tibex:xpdlId="48435d2c-719d-4e34-a482-025f7d021827">
@@ -4938,13 +5010,13 @@
                                 portType="ns0:customer"
                                 tibex:xpdlId="fc70122e-d6e5-4355-9733-905f79f59cf1" variable="putOut-input">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns2="http://xmlns.example.com/20260319160400PLT" xmlns:tns10="http://www.example.org/customers_id" version="2.0"&gt;&lt;xsl:param name="put"/&gt;&lt;xsl:template name="putOut-input" match="/"&gt;&lt;tns2:putResponse&gt;&lt;item&gt;&lt;tns10:customers_id&gt;&lt;xsl:for-each select="$put/item/tns10:customers_id/tns10:customer_id"&gt;&lt;tns10:customer_id&gt;&lt;xsl:if test="tns10:id"&gt;&lt;tns10:id&gt;&lt;xsl:value-of select="tns10:id"/&gt;&lt;/tns10:id&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:name"&gt;&lt;tns10:name&gt;&lt;xsl:value-of select="tns10:name"/&gt;&lt;/tns10:name&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:surname"&gt;&lt;tns10:surname&gt;&lt;xsl:value-of select="tns10:surname"/&gt;&lt;/tns10:surname&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:phonenumber"&gt;&lt;tns10:phonenumber&gt;&lt;xsl:value-of select="tns10:phonenumber"/&gt;&lt;/tns10:phonenumber&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:tiercode"&gt;&lt;tns10:tiercode&gt;&lt;xsl:value-of select="tns10:tiercode"/&gt;&lt;/tns10:tiercode&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:createdate"&gt;&lt;tns10:createdate&gt;&lt;xsl:value-of select="tns10:createdate"/&gt;&lt;/tns10:createdate&gt;&lt;/xsl:if&gt;&lt;/tns10:customer_id&gt;&lt;/xsl:for-each&gt;&lt;/tns10:customers_id&gt;&lt;/item&gt;&lt;/tns2:putResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns10="http://www.example.org/customers_id" xmlns:tns2="http://xmlns.example.com/20260319160400PLT" version="2.0"&gt;&lt;xsl:param name="put"/&gt;&lt;xsl:template name="putOut-input" match="/"&gt;&lt;tns2:putResponse&gt;&lt;item&gt;&lt;tns10:customers_id&gt;&lt;xsl:for-each select="$put/item/tns10:customers_id/tns10:customer_id"&gt;&lt;tns10:customer_id&gt;&lt;xsl:if test="tns10:id"&gt;&lt;tns10:id&gt;&lt;xsl:value-of select="tns10:id"/&gt;&lt;/tns10:id&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:name"&gt;&lt;tns10:name&gt;&lt;xsl:value-of select="tns10:name"/&gt;&lt;/tns10:name&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:surname"&gt;&lt;tns10:surname&gt;&lt;xsl:value-of select="tns10:surname"/&gt;&lt;/tns10:surname&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:phonenumber"&gt;&lt;tns10:phonenumber&gt;&lt;xsl:value-of select="tns10:phonenumber"/&gt;&lt;/tns10:phonenumber&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:tiercode"&gt;&lt;tns10:tiercode&gt;&lt;xsl:value-of select="tns10:tiercode"/&gt;&lt;/tns10:tiercode&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:createdate"&gt;&lt;tns10:createdate&gt;&lt;xsl:value-of select="tns10:createdate"/&gt;&lt;/tns10:createdate&gt;&lt;/xsl:if&gt;&lt;/tns10:customer_id&gt;&lt;/xsl:for-each&gt;&lt;/tns10:customers_id&gt;&lt;/item&gt;&lt;/tns2:putResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://xmlns.example.com/20260319160400PLT&quot; xmlns:tns10=&quot;http://www.example.org/customers_id&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;put.item&quot;/>&#xa;    &lt;xsl:template name=&quot;putOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns10:customers_id>&#xa;            &lt;xsl:for-each select=&quot;$put.item/tns10:customer_id&quot;>&#xa;                &lt;tns10:customer_id>&#xa;                    &lt;xsl:if test=&quot;tns10:id&quot;>&#xa;                        &lt;tns10:id>&#xa;                            &lt;xsl:value-of select=&quot;tns10:id&quot;/>&#xa;                        &lt;/tns10:id>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:name&quot;>&#xa;                        &lt;tns10:name>&#xa;                            &lt;xsl:value-of select=&quot;tns10:name&quot;/>&#xa;                        &lt;/tns10:name>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:surname&quot;>&#xa;                        &lt;tns10:surname>&#xa;                            &lt;xsl:value-of select=&quot;tns10:surname&quot;/>&#xa;                        &lt;/tns10:surname>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:phonenumber&quot;>&#xa;                        &lt;tns10:phonenumber>&#xa;                            &lt;xsl:value-of select=&quot;tns10:phonenumber&quot;/>&#xa;                        &lt;/tns10:phonenumber>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:tiercode&quot;>&#xa;                        &lt;tns10:tiercode>&#xa;                            &lt;xsl:value-of select=&quot;tns10:tiercode&quot;/>&#xa;                        &lt;/tns10:tiercode>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:createdate&quot;>&#xa;                        &lt;tns10:createdate>&#xa;                            &lt;xsl:value-of select=&quot;tns10:createdate&quot;/>&#xa;                        &lt;/tns10:createdate>&#xa;                    &lt;/xsl:if>&#xa;                &lt;/tns10:customer_id>&#xa;            &lt;/xsl:for-each>&#xa;        &lt;/tns10:customers_id>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns10=&quot;http://www.example.org/customers_id&quot; xmlns:tns2=&quot;http://xmlns.example.com/20260319160400PLT&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;put.item&quot;/>&#xa;    &lt;xsl:template name=&quot;putOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns10:customers_id>&#xa;            &lt;xsl:for-each select=&quot;$put.item/tns10:customer_id&quot;>&#xa;                &lt;tns10:customer_id>&#xa;                    &lt;xsl:if test=&quot;tns10:id&quot;>&#xa;                        &lt;tns10:id>&#xa;                            &lt;xsl:value-of select=&quot;tns10:id&quot;/>&#xa;                        &lt;/tns10:id>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:name&quot;>&#xa;                        &lt;tns10:name>&#xa;                            &lt;xsl:value-of select=&quot;tns10:name&quot;/>&#xa;                        &lt;/tns10:name>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:surname&quot;>&#xa;                        &lt;tns10:surname>&#xa;                            &lt;xsl:value-of select=&quot;tns10:surname&quot;/>&#xa;                        &lt;/tns10:surname>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:phonenumber&quot;>&#xa;                        &lt;tns10:phonenumber>&#xa;                            &lt;xsl:value-of select=&quot;tns10:phonenumber&quot;/>&#xa;                        &lt;/tns10:phonenumber>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:tiercode&quot;>&#xa;                        &lt;tns10:tiercode>&#xa;                            &lt;xsl:value-of select=&quot;tns10:tiercode&quot;/>&#xa;                        &lt;/tns10:tiercode>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:createdate&quot;>&#xa;                        &lt;tns10:createdate>&#xa;                            &lt;xsl:value-of select=&quot;tns10:createdate&quot;/>&#xa;                        &lt;/tns10:createdate>&#xa;                    &lt;/xsl:if>&#xa;                &lt;/tns10:customer_id>&#xa;            &lt;/xsl:for-each>&#xa;        &lt;/tns10:customers_id>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <bpws:targets>
-                                    <bpws:target linkName="Iterate1ToputOut"/>
+                                    <bpws:target linkName="Put_endToputOut"/>
                                 </bpws:targets>
                                 <bpws:sources>
                                     <bpws:source linkName="putOutToOnMessageEnd3"/>
@@ -4992,7 +5064,7 @@
                                     <bpws:target linkName="Put_startToIterate1"/>
                                 </bpws:targets>
                                 <bpws:sources>
-                                    <bpws:source linkName="Iterate1ToputOut"/>
+                                    <bpws:source linkName="Iterate1ToLog"/>
                                 </bpws:sources>
                                 <bpws:sequence name="sequence1" tibex:group="iterate">
                                     <bpws:empty name="GroupInit1" tibex:group="groupInit"/>
@@ -5341,6 +5413,42 @@
                                     </bpws:forEach>
                                 </bpws:sequence>
                             </bpws:scope>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    inputVariable="Put_end-input"
+                                    name="Put_end"
+                                    tibex:xpdlId="33de2761-b0c6-4be0-9003-c3a3795d1eb3" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="Iterate1ToLog"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="Put_endToputOut"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Put_end-input&quot; match=&quot;/&quot;>&lt;tns:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;&amp;quot;PUT method ended.&amp;quot;&quot;/>&lt;/message>&lt;/tns:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.generalactivities.log"
+                                    version="6.0.0.001"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Log"/>
+                                    <value
+                                    controlBy="Application"
+                                    role="Info"
+                                    suppressJobInfo="true" xsi:type="generalactivities:Log"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
                         </bpws:flow>
                     </bpws:scope>
                 </bpws:onMessage>
