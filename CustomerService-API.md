@@ -22,7 +22,7 @@ Filters all customers by tiercode where
 
 `#` = 2 -> Premium 
 
-`#` = 3 -> ELite
+`#` = 3 -> Elite
 
 
 ### GET customer by customerID ###
@@ -88,7 +88,7 @@ WARNING2: If the ID is unassigned, this method insert a new customer with the ch
 
  Allows to update only some information regarding a customer.
 
-The request body needs to be in JSON format, as shown in the previous example (PUT) where the sole mandatory entry id "id".
+The request body needs to be in JSON format, as shown in the previous example (PUT) where the sole mandatory entry is "id".
 
 Example to modfy phonenumber and tiercode of customer with ID=17:
 
@@ -105,6 +105,15 @@ PATCH /customer
   ]
 }
 ```
+
+
+### DELETE CUSTOMER ###
+
+DELETE `/customer/:id`
+
+Allow to delete a customer by customerid.
+
+Response body will be "Customer deleted" or "Customer not found", you are smart enough to know what it means.
 
 # Nota per me: #
 
