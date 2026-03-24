@@ -31,6 +31,28 @@
             }
           }
         }
+      },
+      "delete" : {
+        "summary" : "deleteCustomer",
+        "description" : "deleteCustomer",
+        "operationId" : "delete-customer",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
       }
     },
     "/customer" : {

@@ -34,6 +34,10 @@
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
+      <operation xmi:id="_sOvbUCeaEfGtMrlnLPCx9g" operationName="delete" nickname="delete-customer" httpMethod="DELETE" notes="deleteCustomer" responseStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
       <parameters xmi:id="_XbR8sCaYEfGC4dVKaOBWcQ">
         <parameterMapping xmi:id="_XbR8sSaYEfGC4dVKaOBWcQ" parameterName="id" parameterType="Path" required="true"/>
       </parameters>
