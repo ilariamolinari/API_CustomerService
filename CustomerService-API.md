@@ -113,7 +113,7 @@ DELETE `/customer/:id`
 
 Allow to delete a customer by customerid.
 
-Response body will be "Customer deleted" or "Customer not found", you are smart enough to know what it means.
+Response body will be "Customer deleted" or "Customer not found" if customerid has no customer assigned.
 
 # Nota per me: #
 
