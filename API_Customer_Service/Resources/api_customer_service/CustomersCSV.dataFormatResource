@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dataformat="http://ns.tibco.com/bw/palette/dataformat" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:save_customers="http://www.example.org/save_customers" xmi:id="_hJ25oSjvEfG-6oEAx4zE0g" name="api_customer_service.CustomersCSV" type="dataformat:DataFormat">
+  <imports xmi:id="_j9ISgCjvEfG-6oEAx4zE0g" importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/save_customers"/>
+  <jndi:configuration xsi:type="dataformat:DataFormat" xmi:id="_hKADkCjvEfG-6oEAx4zE0g" formatType="Delimiter separated" colSeparator="," colSeparatorParseRule="Treat all characters as entered as a single column separator string" lineSeparator="New Line" fillCharacter="Space" schemaElementQName="save_customers:info_customers" fieldOffsetsStr="id(0,0)&#xA;name(0,0)&#xA;surname(0,0)&#xA;phonenumber(0,0)&#xA;tiercode(0,0)&#xA;createdate(0,0)">
+    <fieldOffsets xmi:id="_j98x4CjvEfG-6oEAx4zE0g" name="id"/>
+    <fieldOffsets xmi:id="_j98x4SjvEfG-6oEAx4zE0g" name="name"/>
+    <fieldOffsets xmi:id="_j98x4ijvEfG-6oEAx4zE0g" name="surname"/>
+    <fieldOffsets xmi:id="_j98x4yjvEfG-6oEAx4zE0g" name="phonenumber"/>
+    <fieldOffsets xmi:id="_j98x5CjvEfG-6oEAx4zE0g" name="tiercode"/>
+    <fieldOffsets xmi:id="_j98x5SjvEfG-6oEAx4zE0g" name="createdate"/>
+  </jndi:configuration>
+</jndi:namedResource>

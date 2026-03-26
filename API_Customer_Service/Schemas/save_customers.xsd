@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/save_customers" xmlns:tns="http://www.example.org/save_customers" elementFormDefault="qualified">
+
+ <element name="info_customers">
+  <complexType>
+   <sequence>
+     <element name="id" type="int" minOccurs="0" maxOccurs="1"></element>
+     <element name="name" type="string" minOccurs="0" maxOccurs="1"></element>
+     <element name="surname" type="string" minOccurs="0" maxOccurs="1"></element>
+     <element name="phonenumber" type="string" minOccurs="0" maxOccurs="1"></element>
+     <element name="tiercode" type="string" minOccurs="0" maxOccurs="1"></element>
+     <element name="createdate" type="date" minOccurs="0" maxOccurs="1"></element>
+   </sequence>
+  </complexType>
+ </element>
+</schema>
