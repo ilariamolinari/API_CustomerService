@@ -129,6 +129,3 @@ throw per quando l customerid non esiste (non si può modificare un customer che
 
 e un catch per il conflitto su phonenumber che gia gestisce sql
 
-aggiungere nella documentazione cosa esce dai vari metodi
-
-Domani riscarica da qui che si è piantata di nuovo la macchina ciao
