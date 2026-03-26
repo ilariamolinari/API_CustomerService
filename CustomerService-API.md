@@ -56,7 +56,11 @@ POST /customer
 }
 ```
 
-NOTE: By using this method, customerid is automatically generated to avoid conflicts
+NOTE: By using this method, customerid is automatically generated to avoid conflicts.
+
+POST method also produces a csv file (PostedCustomers.csv) in which appends posted customers.
+If the file does't exixts, is is created.
+
 
 ### UPDATE customer (PUT) ###
 
@@ -82,7 +86,7 @@ PUT /customer
 ```
 WARNING: This method overwrites existing customer information, be sure to insert correct ID.
 
-WARNING2: If the ID is unassigned, this method insert a new customer with the chosen ID.
+WARNING2: If the ID is unassigned, does nothing.
 
  ### UPDATE customer (PATCH) ###
 
