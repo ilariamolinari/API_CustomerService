@@ -2,6 +2,6 @@
 <jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:subject="http://xsd.tns.tibco.com/trinity/models/identity/subject" xmi:id="_Pp7k4SOmEfG5c4xDyo7NRA" name="api_customer_service.Database_ConnectionResource" type="jdbc:JdbcDataSource">
   <jndi:reference xmi:id="_PsBPkCOmEfG5c4xDyo7NRA" key="subjectJndiName" type="subject:SubjectConfiguration" value=""/>
   <jndi:configuration xsi:type="jdbc:JdbcDataSource" xmi:id="_PsBPkSOmEfG5c4xDyo7NRA" username="postgres" password="#!48MOV9t5hXoKtysYj88rMpTE8EG/2hjmx3WRsT/oDhY=">
-    <connectionConfig xsi:type="jdbc:NonXaConnection" xmi:id="_PsBPkiOmEfG5c4xDyo7NRA" jdbcDriver="tibcosoftwareinc.jdbc.postgresql.PostgreSQLDriver" dbURL="jdbc:tibcosoftwareinc:postgresql://10.0.2.2:5431;DatabaseName=customermanagement"/>
+    <connectionConfig xsi:type="jdbc:NonXaConnection" xmi:id="_PsBPkiOmEfG5c4xDyo7NRA" jdbcDriver="tibcosoftwareinc.jdbc.postgresql.PostgreSQLDriver" dbURL="jdbc:tibcosoftwareinc:postgresql://10.0.2.2:5432;DatabaseName=customermanagement"/>
   </jndi:configuration>
 </jndi:namedResource>
