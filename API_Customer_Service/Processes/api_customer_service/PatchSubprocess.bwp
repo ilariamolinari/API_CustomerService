@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpws:process exitOnStandardFault="no"
-    name="api_customer_service.PutSubprocess" suppressJoinFailure="yes"
-    targetNamespace="http://xmlns.example.com/20260326162428"
+    name="api_customer_service.PatchSubprocess"
+    suppressJoinFailure="yes"
+    targetNamespace="http://xmlns.example.com/20260327164421"
     xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
     xmlns:info="http://www.tibco.com/bw/process/info"
     xmlns:ns="http://www.tibco.com/pe/EngineTypes"
@@ -42,10 +43,10 @@
                 <variable>Update_log-input</variable>
             </endingVariables>
         </task>
-        <task name="Update">
+        <task name="Partial_Update">
             <endingVariables>
-                <variable>Update-input</variable>
-                <variable>Update</variable>
+                <variable>Partial_Update-input</variable>
+                <variable>Partial_Update</variable>
             </endingVariables>
         </task>
         <task name="Error_log">
@@ -406,6 +407,8 @@
                             name="phonenumber" nillable="true" type="string"/>
                         <element maxOccurs="1" minOccurs="1"
                             name="tiercode" nillable="true" type="string"/>
+                        <element maxOccurs="1" minOccurs="1"
+                            name="cratedate" nillable="true" type="date"/>
                         <element maxOccurs="1" minOccurs="1" name="id"
                             nillable="true" type="int"/>
                         <element maxOccurs="1" minOccurs="0"
@@ -1359,11 +1362,11 @@
         <bpws:variable element="ns4:ActivityInput"
             name="Update_log-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns5:jdbcUpdateActivityInput"
-            name="Update-input" sca-bpel:internal="true"/>
+            name="Partial_Update-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns6:jdbcUpdateActivityOutput"
-            name="Update" sca-bpel:internal="true"/>
+            name="Partial_Update" sca-bpel:internal="true"/>
         <bpws:variable element="ns7:ActivityErrorData"
-            name="_error_Update" sca-bpel:internal="true"/>
+            name="_error_Partial_Update" sca-bpel:internal="true"/>
         <bpws:variable element="ns4:ActivityInput"
             name="Error_log-input" sca-bpel:internal="true"/>
         <bpws:variable name="FaultName1" sca-bpel:internal="true" type="xsd:string"/>
@@ -1488,8 +1491,7 @@
                 </bpws:sources>
                 <bpws:sequence name="sequence" tibex:group="iterate">
                     <bpws:assign name="GroupInit"
-                        tibex:group="groupInit"
-                        tibex:xpdlId="32f89a99-832c-42c5-bd98-e95d5977f92a" validate="no">
+                        tibex:group="groupInit" validate="no">
                         <bpws:copy>
                             <bpws:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"><![CDATA[<?xml version="1.0" encoding="UTF-8"?> <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://tns.tibco.com/bw/palette/internal/accumulateoutput+a1dcd7f3-fbd9-4686-90b4-228863a500a6" version="2.0"> <xsl:template name="Accumulate" match="/"> <tns:AccumulatedOutput/></xsl:template> </xsl:stylesheet>]]></bpws:from>
                             <bpws:to variable="Accumulate"/>
@@ -1661,9 +1663,9 @@
                                 </bpws:extensionActivity>
                                 <bpws:extensionActivity>
                                     <tibex:activityExtension
-                                    inputVariable="Update-input"
-                                    name="Update"
-                                    outputVariable="Update"
+                                    inputVariable="Partial_Update-input"
+                                    name="Partial_Update"
+                                    outputVariable="Partial_Update"
                                     tibex:xpdlId="89bd50fc-1e83-450b-8838-694b3c94a748" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
                                     <bpws:target linkName="Update_logToJDBCUpdate"/>
@@ -1673,7 +1675,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+89bd50fc-1e83-450b-8838-694b3c94a748+input&quot; xmlns:tns1=&quot;http://www.example.org/customers_id&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;SingleCustomer&quot;/>&lt;xsl:template name=&quot;Update-input&quot; match=&quot;/&quot;>&lt;xsl:for-each select=&quot;$SingleCustomer&quot;>&lt;tns3:jdbcUpdateActivityInput>&lt;name>&lt;xsl:choose>&lt;xsl:when test=&quot;exists(tns1:name)&quot;>&lt;xsl:value-of select=&quot;tns1:name&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/name>&lt;surname>&lt;xsl:choose>&lt;xsl:when test=&quot;exists(tns1:surname)&quot;>&lt;xsl:value-of select=&quot;tns1:surname&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/surname>&lt;phonenumber>&lt;xsl:choose>&lt;xsl:when test=&quot;exists(tns1:phonenumber)&quot;>&lt;xsl:value-of select=&quot;tns1:phonenumber&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/phonenumber>&lt;tiercode>&lt;xsl:choose>&lt;xsl:when test=&quot;exists(tns1:tiercode)&quot;>&lt;xsl:value-of select=&quot;tns1:tiercode&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/tiercode>&lt;id>&lt;xsl:value-of select=&quot;xsd:int(tns1:id)&quot;/>&lt;/id>&lt;/tns3:jdbcUpdateActivityInput>&lt;/xsl:for-each>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+89bd50fc-1e83-450b-8838-694b3c94a748+input&quot; xmlns:tns1=&quot;http://www.example.org/customers_id&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;SingleCustomer&quot;/>&lt;xsl:template name=&quot;Partial_Update-input&quot; match=&quot;/&quot;>&lt;xsl:for-each select=&quot;$SingleCustomer&quot;>&lt;tns3:jdbcUpdateActivityInput>&lt;name>&lt;xsl:choose>&lt;xsl:when test=&quot;exists(tns1:name)&quot;>&lt;xsl:value-of select=&quot;tns1:name&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/name>&lt;surname>&lt;xsl:choose>&lt;xsl:when test=&quot;exists(tns1:surname)&quot;>&lt;xsl:value-of select=&quot;tns1:surname&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/surname>&lt;phonenumber>&lt;xsl:choose>&lt;xsl:when test=&quot;exists(tns1:phonenumber)&quot;>&lt;xsl:value-of select=&quot;tns1:phonenumber&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/phonenumber>&lt;tiercode>&lt;xsl:choose>&lt;xsl:when test=&quot;exists(tns1:tiercode)&quot;>&lt;xsl:value-of select=&quot;tns1:tiercode&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/tiercode>&lt;cratedate>&lt;xsl:choose>&lt;xsl:when test=&quot;exists(tns1:createdate)&quot;>&lt;xsl:value-of select=&quot;tns1:createdate&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/cratedate>&lt;id>&lt;xsl:value-of select=&quot;xsd:int(tns1:id)&quot;/>&lt;/id>&lt;/tns3:jdbcUpdateActivityInput>&lt;/xsl:for-each>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -1687,7 +1689,7 @@
                                     <type href="http://ns.tibco.com/bw/palette/jdbc#//JDBCUpdateActivity"/>
                                     <value
                                     sharedResourceProperty="jdbcProperty"
-                                    sqlStatement="UPDATE customer&#xa;SET name=?, surname=?, phonenumber=?, &#xa;tiercode=?&#xa;WHERE customerid = ?;"
+                                    sqlStatement="UPDATE customer&#xd;&#xa;SET &#xd;&#xa;&#x9;name = COALESCE(NULLIF(?, ' '), name),&#xd;&#xa;&#x9;surname = COALESCE(NULLIF(?, ' '), surname),&#xd;&#xa;&#x9;phonenumber = COALESCE(NULLIF(?, ' '), phonenumber),&#xd;&#xa;&#x9;tiercode = COALESCE(CAST(NULLIF(?, ' ') AS INTEGER), tiercode),&#xd;&#xa;&#x9;createdate = COALESCE(CAST(NULLIF(?, ' ') AS DATE), createdate)&#xd;&#xa;WHERE customerid = ?"
                                     timeout="10" xsi:type="jdbcPalette:JDBCUpdateActivity">
 
                                     <PreparedParameters
@@ -1705,6 +1707,10 @@
                                     <PreparedParameters
                                     DataType="12"
                                     DataTypeDisplayValue="VARCHAR" ParameterName="tiercode"/>
+
+                                    <PreparedParameters
+                                    DataType="91"
+                                    DataTypeDisplayValue="DATE" ParameterName="cratedate"/>
 
                                     <PreparedParameters
                                     DataType="4"

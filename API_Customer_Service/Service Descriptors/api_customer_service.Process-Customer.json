@@ -5,7 +5,7 @@
     "title" : "Customer",
     "description" : "Customer service"
   },
-  "host" : "localhost:8080",
+  "host" : "",
   "basePath" : "/",
   "schemes" : [ "http" ],
   "paths" : {
@@ -143,9 +143,9 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "a customers_id to be returned",
+            "description" : "a display_results to be returned",
             "schema" : {
-              "$ref" : "#/definitions/customers_id"
+              "$ref" : "#/definitions/display_results"
             }
           }
         }
