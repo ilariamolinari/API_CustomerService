@@ -28,6 +28,11 @@
                 <variable>SingleCustomer</variable>
             </endingVariables>
         </task>
+        <task name="GroupEnd">
+            <endingVariables>
+                <variable>Query</variable>
+            </endingVariables>
+        </task>
         <task name="Query">
             <endingVariables>
                 <variable>Query-input</variable>
@@ -36,7 +41,6 @@
         <task name="Update_log">
             <endingVariables>
                 <variable>Update_log-input</variable>
-                <variable>Query</variable>
             </endingVariables>
         </task>
         <task name="Update">
@@ -1210,7 +1214,7 @@
                                     <bpws:link
                                     name="Update_logToJDBCUpdate" tibex:linkType="SUCCESS"/>
                                     <bpws:link name="UpdateToGroupEnd" tibex:linkType="SUCCESS"/>
-                                    <bpws:link name="QueryToLog1" tibex:linkType="SUCCESS"/>
+                                    <bpws:link name="QueryToLog1" tibex:linkType="SUCCESSWITHCONDITION"/>
                                     <bpws:link
                                     name="Error_logToGroupEnd" tibex:linkType="SUCCESS"/>
                                 </bpws:links>
@@ -1250,7 +1254,14 @@
 
                                     <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$Query/Record[1]/cnt > 0]]></bpws:transitionCondition>
                                     </bpws:source>
-                                    <bpws:source linkName="QueryToLog1"/>
+                                    <bpws:source linkName="QueryToLog1">
+                                    <tibex:DesignExpression>
+                                    <tibex:expression
+                                    expression="$Query/Record[1]/cnt = 0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    </tibex:DesignExpression>
+
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$Query/Record[1]/cnt = 0]]></bpws:transitionCondition>
+                                    </bpws:source>
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
@@ -1352,7 +1363,7 @@
                                     <type href="http://ns.tibco.com/bw/palette/jdbc#//JDBCUpdateActivity"/>
                                     <value
                                     sharedResourceProperty="jdbcProperty"
-                                    sqlStatement="UPDATE customer&#xa;SET name=?, surname=?, phonenumber=?, &#xa;tierode=?&#xa;WHERE customerid = ?;"
+                                    sqlStatement="UPDATE customer&#xa;SET name=?, surname=?, phonenumber=?, &#xa;tiercode=?&#xa;WHERE customerid = ?;"
                                     timeout="10" xsi:type="jdbcPalette:JDBCUpdateActivity">
 
                                     <PreparedParameters
@@ -1409,7 +1420,7 @@
                                     <type href="http://ns.tibco.com/bw/palette/generalactivities#//Log"/>
                                     <value
                                     controlBy="Application"
-                                    role="Info"
+                                    role="Error"
                                     suppressJobInfo="true" xsi:type="generalactivities:Log"/>
                                     </properties>
                                     </activityConfig>
