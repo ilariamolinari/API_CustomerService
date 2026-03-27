@@ -20,16 +20,16 @@
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
     xmlns:tibprop="http://ns.tibco.com/bw/property" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <tibex:VariableDescriptor type="MemorySaving">
+        <task name="End">
+            <endingVariables>
+                <variable>Accumulate</variable>
+            </endingVariables>
+        </task>
         <task name="Iterate">
             <endingVariables>
                 <variable>Start</variable>
                 <variable>Mapper</variable>
                 <variable>SingleCustomer</variable>
-            </endingVariables>
-        </task>
-        <task name="Accumulate">
-            <endingVariables>
-                <variable>Accumulate</variable>
             </endingVariables>
         </task>
         <task name="Query">
@@ -531,7 +531,7 @@
         productVersion="6.9.0 V26 2022-11-02" scalable="true"
         singleton="true" stateless="false" type="IT"/>
     <tibex:ProcessInterface context=""
-        input="{http://www.example.org/customers_id}customers_id" output="{http://www.example.org/customers_id}customers_id"/>
+        input="{http://www.example.org/customers_id}customers_id" output="{http://www.example.org/display_results}display_results"/>
     <tibex:ProcessTemplateConfigurations/>
     <notation:Diagram measurementUnit="Pixel" type="BWProcess"
         xmlns:bwnotation="http://tns.tibco.com/bw/runtime/BWNotation"
@@ -1370,11 +1370,11 @@
         <bpws:variable element="ns:FaultDetail" name="FaultDetails1" sca-bpel:internal="true"/>
         <bpws:variable element="ns4:ActivityInput"
             name="Catch_All_log-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns0:customers_id" name="End-input"
-            sca-bpel:internal="true" tibex:parameter="out"/>
         <bpws:variable element="ns8:display_results" name="Mapper-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns8:display_results" name="Mapper" sca-bpel:internal="true"/>
         <bpws:variable element="ns9:AccumulatedOutput" name="Accumulate" sca-bpel:internal="true"/>
+        <bpws:variable element="ns8:display_results" name="End-input"
+            sca-bpel:internal="true" tibex:parameter="out"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1461,7 +1461,7 @@
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?> &lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/customers_id&quot; version=&quot;2.0&quot;> &lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;> &lt;tns1:customers_id/>&lt;/xsl:template> &lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.example.org/display_results&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Accumulate&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns4:display_results>&lt;xsl:for-each select=&quot;$Accumulate/tns4:display_results/tns4:results&quot;>&lt;tns4:results>&lt;xsl:value-of select=&quot;.&quot;/>&lt;/tns4:results>&lt;/xsl:for-each>&lt;/tns4:display_results>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -1766,7 +1766,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.example.org/display_results&quot; xmlns:tns1=&quot;http://www.example.org/customers_id&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;SingleCustomer&quot;/>&lt;xsl:param name=&quot;Query&quot;/>&lt;xsl:template name=&quot;Mapper-input&quot; match=&quot;/&quot;>&lt;tns4:display_results>&lt;tns4:results>&lt;xsl:value-of select=&quot;if ($Query/Record[1]/cnt > 0) then concat(&amp;quot;Updating customer with ID: &amp;quot;, xsd:string($SingleCustomer/tns1:id))&amp;#xD;&amp;#xA;else concat(&amp;quot;Customer with ID: &amp;quot;, xsd:string($SingleCustomer/tns1:id), &amp;quot; not found.&amp;quot;)&quot;/>&lt;/tns4:results>&lt;/tns4:display_results>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.example.org/display_results&quot; xmlns:tns1=&quot;http://www.example.org/customers_id&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;SingleCustomer&quot;/>&lt;xsl:param name=&quot;Query&quot;/>&lt;xsl:template name=&quot;Mapper-input&quot; match=&quot;/&quot;>&lt;tns4:display_results>&lt;tns4:results>&lt;xsl:value-of select=&quot;if ($Query/Record[1]/cnt > 0) then concat(&amp;quot;Customer  &amp;quot;, xsd:string($SingleCustomer/tns1:id), &amp;quot; updated.&amp;quot;)&amp;#xD;&amp;#xA;else concat(&amp;quot;Customer &amp;quot;, xsd:string($SingleCustomer/tns1:id), &amp;quot; not found.&amp;quot;)&quot;/>&lt;/tns4:results>&lt;/tns4:display_results>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity

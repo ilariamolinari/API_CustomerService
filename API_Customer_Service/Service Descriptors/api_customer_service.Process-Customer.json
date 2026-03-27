@@ -119,9 +119,9 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "a customers_id to be returned",
+            "description" : "a display_results to be returned",
             "schema" : {
-              "$ref" : "#/definitions/customers_id"
+              "$ref" : "#/definitions/display_results"
             }
           }
         }
@@ -197,6 +197,18 @@
           "type" : "array",
           "items" : {
             "$ref" : "#/definitions/customer_id",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "display_results" : {
+      "type" : "object",
+      "properties" : {
+        "results" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
             "uniqueItems" : false
           }
         }

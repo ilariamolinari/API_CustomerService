@@ -29,6 +29,7 @@
     xmlns:ns28="http://www.tibco.com/namespaces/tnt/plugins/file"
     xmlns:ns29="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.write"
     xmlns:ns3="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b50ad173-3a6d-4fa5-b201-afaea653b20c+output"
+    xmlns:ns30="http://www.example.org/display_results"
     xmlns:ns4="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.JDBCQuery"
     xmlns:ns5="http://www.example.org/customers"
     xmlns:ns6="http://www.tibco.com/namespaces/tnt/plugins/jdbc+c4e35070-d3d7-4691-be50-281100a0683c+input"
@@ -172,7 +173,7 @@
         <task name="putOut">
             <endingVariables>
                 <variable>putOut-input</variable>
-                <variable>put</variable>
+                <variable>CallProcess</variable>
             </endingVariables>
         </task>
         <task name="Put_start">
@@ -188,7 +189,7 @@
         <task name="CallProcess">
             <endingVariables>
                 <variable>CallProcess-input</variable>
-                <variable>CallProcess</variable>
+                <variable>put</variable>
             </endingVariables>
         </task>
         <task name="patchOut">
@@ -1341,6 +1342,7 @@
         </schema>
         <wsdl:definitions
             targetNamespace="http://xmlns.example.com/20260319160400PLT"
+            xmlns:custom="http://www.example.org/display_results"
             xmlns:extns="http://www.example.org/customers"
             xmlns:extns1="http://tns.tibco.com/bw/REST"
             xmlns:extns2="http://xmlns.example.com/Customer/parameters"
@@ -1360,6 +1362,7 @@
             <wsdl:import namespace="http://tns.tibco.com/bw/REST"/>
             <wsdl:import namespace="http://xmlns.example.com/Customer/parameters"/>
             <wsdl:import namespace="http://www.example.org/customers_id"/>
+            <wsdl:import namespace="http://www.example.org/display_results"/>
             <wsdl:message name="getRequest">
                 <wsdl:part element="extns1:httpHeaders"
                     name="httpHeaders" tibex:source="bw.rest"/>
@@ -1410,7 +1413,7 @@
                     name="httpHeaders" tibex:source="bw.rest"/>
             </wsdl:message>
             <wsdl:message name="putResponse">
-                <wsdl:part element="extns3:customers_id" name="item" tibex:hasMultipleNamespaces="false"/>
+                <wsdl:part element="custom:display_results" name="item" tibex:hasMultipleNamespaces="false"/>
             </wsdl:message>
             <wsdl:message name="put4XXFaultMessage">
                 <wsdl:part element="extns1:client4XXError" name="clientError"/>
@@ -5667,6 +5670,7 @@
         location="../../Schemas/customers.xsd" namespace="http://www.example.org/customers"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema"
         location="../../Schemas/customers_id.xsd" namespace="http://www.example.org/customers_id"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/display_results"/>
     <bpws:partnerLinks>
         <bpws:partnerLink myRole="use" name="customer"
             partnerLinkType="ns0:partnerLinkType"
@@ -5807,7 +5811,7 @@
         <bpws:variable element="ns1:ActivityInput" name="Post_end-input" sca-bpel:internal="true"/>
         <bpws:variable element="tns:customers_id"
             name="CallProcess-input" sca-bpel:internal="true"/>
-        <bpws:variable element="tns:customers_id" name="CallProcess" sca-bpel:internal="true"/>
+        <bpws:variable element="ns30:display_results" name="CallProcess" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -6915,10 +6919,10 @@
                                 portType="ns0:customer"
                                 tibex:xpdlId="fc70122e-d6e5-4355-9733-905f79f59cf1" variable="putOut-input">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns10="http://www.example.org/customers_id" xmlns:tns2="http://xmlns.example.com/20260319160400PLT" version="2.0"&gt;&lt;xsl:param name="put"/&gt;&lt;xsl:template name="putOut-input" match="/"&gt;&lt;tns2:putResponse&gt;&lt;item&gt;&lt;tns10:customers_id&gt;&lt;xsl:for-each select="$put/item/tns10:customers_id/tns10:customer_id"&gt;&lt;tns10:customer_id&gt;&lt;xsl:if test="tns10:id"&gt;&lt;tns10:id&gt;&lt;xsl:value-of select="tns10:id"/&gt;&lt;/tns10:id&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:name"&gt;&lt;tns10:name&gt;&lt;xsl:value-of select="tns10:name"/&gt;&lt;/tns10:name&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:surname"&gt;&lt;tns10:surname&gt;&lt;xsl:value-of select="tns10:surname"/&gt;&lt;/tns10:surname&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:phonenumber"&gt;&lt;tns10:phonenumber&gt;&lt;xsl:value-of select="tns10:phonenumber"/&gt;&lt;/tns10:phonenumber&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:tiercode"&gt;&lt;tns10:tiercode&gt;&lt;xsl:value-of select="tns10:tiercode"/&gt;&lt;/tns10:tiercode&gt;&lt;/xsl:if&gt;&lt;xsl:if test="tns10:createdate"&gt;&lt;tns10:createdate&gt;&lt;xsl:value-of select="tns10:createdate"/&gt;&lt;/tns10:createdate&gt;&lt;/xsl:if&gt;&lt;/tns10:customer_id&gt;&lt;/xsl:for-each&gt;&lt;/tns10:customers_id&gt;&lt;/item&gt;&lt;/tns2:putResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns10="http://www.example.org/customers_id" xmlns:tns2="http://xmlns.example.com/20260319160400PLT" xmlns:tns="http://www.example.org/display_results" version="2.0"&gt;&lt;xsl:param name="CallProcess"/&gt;&lt;xsl:template name="putOut-input" match="/"&gt;&lt;tns2:putResponse&gt;&lt;item&gt;&lt;tns:display_results&gt;&lt;xsl:for-each select="$CallProcess/tns:results"&gt;&lt;tns:results&gt;&lt;xsl:value-of select="."/&gt;&lt;/tns:results&gt;&lt;/xsl:for-each&gt;&lt;/tns:display_results&gt;&lt;/item&gt;&lt;/tns2:putResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns10=&quot;http://www.example.org/customers_id&quot; xmlns:tns2=&quot;http://xmlns.example.com/20260319160400PLT&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;put.item&quot;/>&#xa;    &lt;xsl:template name=&quot;putOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns10:customers_id>&#xa;            &lt;xsl:for-each select=&quot;$put.item/tns10:customer_id&quot;>&#xa;                &lt;tns10:customer_id>&#xa;                    &lt;xsl:if test=&quot;tns10:id&quot;>&#xa;                        &lt;tns10:id>&#xa;                            &lt;xsl:value-of select=&quot;tns10:id&quot;/>&#xa;                        &lt;/tns10:id>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:name&quot;>&#xa;                        &lt;tns10:name>&#xa;                            &lt;xsl:value-of select=&quot;tns10:name&quot;/>&#xa;                        &lt;/tns10:name>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:surname&quot;>&#xa;                        &lt;tns10:surname>&#xa;                            &lt;xsl:value-of select=&quot;tns10:surname&quot;/>&#xa;                        &lt;/tns10:surname>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:phonenumber&quot;>&#xa;                        &lt;tns10:phonenumber>&#xa;                            &lt;xsl:value-of select=&quot;tns10:phonenumber&quot;/>&#xa;                        &lt;/tns10:phonenumber>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:tiercode&quot;>&#xa;                        &lt;tns10:tiercode>&#xa;                            &lt;xsl:value-of select=&quot;tns10:tiercode&quot;/>&#xa;                        &lt;/tns10:tiercode>&#xa;                    &lt;/xsl:if>&#xa;                    &lt;xsl:if test=&quot;tns10:createdate&quot;>&#xa;                        &lt;tns10:createdate>&#xa;                            &lt;xsl:value-of select=&quot;tns10:createdate&quot;/>&#xa;                        &lt;/tns10:createdate>&#xa;                    &lt;/xsl:if>&#xa;                &lt;/tns10:customer_id>&#xa;            &lt;/xsl:for-each>&#xa;        &lt;/tns10:customers_id>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns10=&quot;http://www.example.org/customers_id&quot; xmlns:tns2=&quot;http://xmlns.example.com/20260319160400PLT&quot; xmlns:tns=&quot;http://www.example.org/display_results&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;CallProcess&quot;/>&#xa;    &lt;xsl:template name=&quot;putOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:display_results>&#xa;            &lt;xsl:for-each select=&quot;$CallProcess/tns:results&quot;>&#xa;                &lt;tns:results>&#xa;                    &lt;xsl:value-of select=&quot;.&quot;/>&#xa;                &lt;/tns:results>&#xa;            &lt;/xsl:for-each>&#xa;        &lt;/tns:display_results>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <bpws:targets>
                                     <bpws:target linkName="CallProcessToputOut"/>
