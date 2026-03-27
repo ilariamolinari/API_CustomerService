@@ -1,7 +1,8 @@
 # Customer Service API #
 
 Exmaple of an API that allows for customer management.
-`http://DESKTOP-D0USMSR:8080`
+
+(Capire perchè non riesco a collegarmi da sito)
 
 ## Endpoints ##
 
