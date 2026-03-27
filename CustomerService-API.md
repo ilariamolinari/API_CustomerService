@@ -10,7 +10,7 @@ Exmaple of an API that allows for customer management.
 
 GET `/customer`
 
-Returns list of all customers
+Returns list of all customers in JSON format.
 
 
 ### Filter customers by tiercode ###
@@ -30,17 +30,18 @@ Filters all customers by tiercode where
 
 GET `/customer/:id`
 
-Get one single customer by knowing its customerid
+Response returns one single customer with chosen customerid.
 
 
 ### POST customers ###
 
 POST `/customer`
 
-Allow to insert new customer(s) in the customer database 
+Allows to insert one or mutiple new custpmers in the customer database.
 
-The request body needs to be in JSON format shown in the example.
+The request body needs to be in JSON format as shown in the example.
 
+Example:
 ```
 POST /customer
 
@@ -57,18 +58,19 @@ POST /customer
 }
 ```
 
-NOTE: By using this method, customerid is automatically generated to avoid conflicts.
+NOTE: customerid is automatically generated to avoid conflicts.
 
 POST method also produces a csv file (PostedCustomers.csv) in which appends posted customers.
-If the file does't exixts, is is created.
+If the file does't exixts, it is created.
 
 
 ### UPDATE customer (PUT) ###
 
- Allows to overwrite all information about an existing customer by knowing its customerid.
+Allows to overwrite all information about one or multiple existing customers by knowing its customerid.
 
- The request body needs to be in JSON format as shown in the example.
+The request body needs to be in JSON format as shown in the example.
 
+Example
 ```
 PUT /customer
 
@@ -85,9 +87,14 @@ PUT /customer
   ]
 }
 ```
+Response body is in JSON format containing a list of string describing the outcome of the operation:
+
+- "Cusomer # updated" if the update is successful.
+
+- "Customer # not found" if the customer id is yet to be assigned.
+
 WARNING: This method overwrites existing customer information, be sure to insert correct ID.
 
-WARNING2: If the ID is unassigned, does nothing.
 
  ### UPDATE customer (PATCH) ###
 
@@ -110,7 +117,11 @@ PATCH /customer
   ]
 }
 ```
+Response body is in JSON format containing a list of string describing the outcome of the operation:
 
+- "Cusomer # updated" if the update is successful.
+
+- "Customer # not found" if the customer id is yet to be assigned.
 
 ### DELETE CUSTOMER ###
 
@@ -125,8 +136,6 @@ Response body will be "Customer deleted" or "Customer not found" if customerid h
 ## Ancora da aggiungere ##
 
 createdate (che ancora non si può modificare
-
-throw per quando l customerid non esiste (non si può modificare un customer che non esiste)
 
 e un catch per il conflitto su phonenumber che gia gestisce sql
 
