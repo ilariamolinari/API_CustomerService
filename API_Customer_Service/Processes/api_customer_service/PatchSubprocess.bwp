@@ -1491,7 +1491,8 @@
                 </bpws:sources>
                 <bpws:sequence name="sequence" tibex:group="iterate">
                     <bpws:assign name="GroupInit"
-                        tibex:group="groupInit" validate="no">
+                        tibex:group="groupInit"
+                        tibex:xpdlId="1e68103d-feaa-422f-9b22-81d23209a787" validate="no">
                         <bpws:copy>
                             <bpws:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"><![CDATA[<?xml version="1.0" encoding="UTF-8"?> <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://tns.tibco.com/bw/palette/internal/accumulateoutput+a1dcd7f3-fbd9-4686-90b4-228863a500a6" version="2.0"> <xsl:template name="Accumulate" match="/"> <tns:AccumulatedOutput/></xsl:template> </xsl:stylesheet>]]></bpws:from>
                             <bpws:to variable="Accumulate"/>
